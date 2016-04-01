@@ -3,17 +3,19 @@
 
 {% block body %}
     
-    
+  
     <table class="table">
     {% for c in kunden %}
         <tr>
             <td>{{ c.id }}</td>
             <td>{{ c.name }}</td>
             <td>{{ c.adresse }}</td>
-            <td>"haslkdfhlkeds </td>
+            <td><button type="button" class="btn btn-default btn-lg"> Edit</button> </td>
         </tr>
     {% endfor %}
     </table>
+    
+   
     
 {% endblock %}
 
