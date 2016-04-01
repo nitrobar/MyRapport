@@ -66,3 +66,35 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+    
+    
+    # Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    filters:
+        less:
+            node: /usr/local/bin/node
+            node_paths: [/usr/local/lib/node_modules]
+            apply_to: "\\\\.less$"
+        cssrewrite: ~
+
+    
+    
+    # braincrafted Configuration
+braincrafted_bootstrap:
+    output_dir:
+    css_preprocessor: less
+    assets_dir: "%kernel.root_dir%/../vendor/twbs/bootstrap"
+    jquery_path: "%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.1.js"
+    fonts_dir: "%kernel.root_dir%/../web/fonts"
+    auto_configure:
+        assetic: true
+        twig: true
+        knp_menu: true
+        knp_paginator: true
+    customize:
+        variables_file: ~
+        bootstrap_output: "%kernel.root_dir%/Resources/less/bootstrap.less"
+        bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
