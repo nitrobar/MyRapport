@@ -1,3 +1,7 @@
+acme_my_rapport:
+    resource: "@AcmeMyRapportBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

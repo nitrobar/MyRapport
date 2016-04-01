@@ -2,7 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
+    <div class="jumbotron">
+    <h1>MyRapport</h1>
+    <p>Hier können zukünftig Projekte rapportiert werden.</p>
   
     <table class="table">
     {% for c in kunden %}
@@ -14,7 +16,7 @@
         </tr>
     {% endfor %}
     </table>
-    
+    </div>
    
     
 {% endblock %}

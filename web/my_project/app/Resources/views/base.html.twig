@@ -11,11 +11,10 @@
         
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
     </head>
-    <body>
+    <body class="jumbotron">
      <script src="{{ asset('js/jquery.js') }}"></script>
      <script src="{{ asset('js/bootstrap.js') }}"></script>
      
-    <h1>MyRapport</h1>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
