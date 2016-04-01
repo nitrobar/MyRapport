@@ -1905,6 +1905,15 @@ textarea.input-lg {
   -o-user-select: none;
   user-select: none;
 }
+
+.btn-right {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  float: right;
+}
+
+
 .btn:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
@@ -1934,7 +1943,7 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #333;
-  background-color: grey;
+  background-color: #fff;
   border-color: #ccc;
 }
 .btn-default:hover,

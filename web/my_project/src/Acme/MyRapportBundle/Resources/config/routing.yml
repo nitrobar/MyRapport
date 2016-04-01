@@ -1,3 +1,0 @@
-acme_my_rapport_homepage:
-    path:     /
-    defaults: { _controller: AcmeMyRapportBundle:Default:index }
