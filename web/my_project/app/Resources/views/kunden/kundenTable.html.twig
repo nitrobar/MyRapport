@@ -4,16 +4,20 @@
 {% block body %}
     
   
-    <table class="table">
-    {% for c in kunden %}
+  <table class="table">
+    {% for k in kunden %}
         <tr>
-            <td>{{ c.id }}</td>
-            <td>{{ c.name }}</td>
-            <td>{{ c.adresse }}</td>
+            <td>{{ k.id }}</td>
+            <td>{{ k.name }}</td>
+            <td>{{ k.adresse }}</td>
             <td><button type="button" class="btn btn-default btn-lg"> Edit</button> </td>
         </tr>
     {% endfor %}
-    </table>
+    </table>	
+    
+  
+   
+{# zhkzhkz7ghktzgktg#}
     
    
     

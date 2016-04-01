@@ -28,10 +28,10 @@ class DefaultController extends Controller
     public function createAction()
     {
     	$kundenliste = new Kundenliste();
-    	$kundenliste->setName('Max Muster');
-    	$kundenliste->setAdresse('Musterstrasse 12');
-    	$kundenliste->setOrt('Chur');
-    	$kundenliste->setTelefon('0813539988');
+    	$kundenliste->setName('Fritz Fischer');
+    	$kundenliste->setAdresse('Fischerstrasse 8');
+    	$kundenliste->setOrt('Landquart');
+    	$kundenliste->setTelefon('0813437854');
     	
     	$em = $this->getDoctrine()->getManager();
    
