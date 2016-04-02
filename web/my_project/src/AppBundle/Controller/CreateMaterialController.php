@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Kundenliste;
+use AppBundle\Entity\Materialliste;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,16 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Name;
 use AppBundle\Form\Type\NameType;
 
-class CreateKundenController extends Controller
+class CreateMaterialController extends Controller
 {
 	/**
-	 * @Route("kunden/create")
+	 * @Route("material/create")
 	 */
 	
 	public function newAction(Request $request)
 	{
 		// create a task and give it some dummy data for this example
-		$kunde = new Kundenliste();
+		$material = new Materialliste();
 		/*
 		$kunde->setName('John');
 		$kunde->setOrt('Ems');
@@ -27,7 +27,7 @@ class CreateKundenController extends Controller
 		$kunde->setTelefon('0813535539');
 		*/
 
-		$form = $this->createFormBuilder($kunde)
+		$form = $this->createFormBuilder($material)
 	
 		->add('Name', TextType::class)
 		
@@ -46,13 +46,13 @@ class CreateKundenController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			 
 			// tells Doctrine you want to (eventually) save the Product (no queries yet)
-			$em->persist($kunde);
+			$em->persist($material);
 			
 			// actually executes the queries (i.e. the INSERT query)
 			$em->flush();
 			
 		
-			return $this->redirectToRoute('kundenliste');
+			return $this->redirectToRoute('materialliste');
 		}
 		
 		return $this->render('default/new.html.twig', array(
