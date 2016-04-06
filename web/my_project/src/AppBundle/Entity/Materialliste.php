@@ -5,18 +5,17 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Kundenliste
+ * Materialliste
  *
- * @ORM\Table(name="kundenliste")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\KundenlisteRepository")
+ * @ORM\Table(name="materialliste")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MateriallisteRepository")
  */
-class Kundenliste
-{
-	
+class Materialliste
+{	
 	/**
-	 * @ORM\OneToMany(targetEntity="Kunde", mappedBy="kundenliste")
+	 * @ORM\OneToMany(targetEntity="Material", mappedBy="materialliste")
 	 */
-	private $kunden;
+	private $materialien;
 	
     /**
      * @var int
@@ -30,7 +29,7 @@ class Kundenliste
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="Name", type="string", length=255)
      */
     private $name;
 
@@ -50,7 +49,7 @@ class Kundenliste
      *
      * @param string $name
      *
-     * @return Kundenliste
+     * @return Materialliste
      */
     public function setName($name)
     {
@@ -73,40 +72,40 @@ class Kundenliste
      */
     public function __construct()
     {
-        $this->kunden = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->materialien = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add kunden
+     * Add materialien
      *
-     * @param \AppBundle\Entity\Kunde $kunden
+     * @param \AppBundle\Entity\Material $materialien
      *
-     * @return Kundenliste
+     * @return Materialliste
      */
-    public function addKunden(\AppBundle\Entity\Kunde $kunden)
+    public function addMaterialien(\AppBundle\Entity\Material $materialien)
     {
-        $this->kunden[] = $kunden;
+        $this->materialien[] = $materialien;
 
         return $this;
     }
 
     /**
-     * Remove kunden
+     * Remove materialien
      *
-     * @param \AppBundle\Entity\Kunde $kunden
+     * @param \AppBundle\Entity\Material $materialien
      */
-    public function removeKunden(\AppBundle\Entity\Kunde $kunden)
+    public function removeMaterialien(\AppBundle\Entity\Material $materialien)
     {
-        $this->kunden->removeElement($kunden);
+        $this->materialien->removeElement($materialien);
     }
 
     /**
-     * Get kunden
+     * Get materialien
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getKunden()
+    public function getMaterialien()
     {
-        return $this->kunden;
+        return $this->materialien;
     }
 }

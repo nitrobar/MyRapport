@@ -68,45 +68,5 @@ class Kundenliste
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->kunden = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add kunden
-     *
-     * @param \AppBundle\Entity\Kunde $kunden
-     *
-     * @return Kundenliste
-     */
-    public function addKunden(\AppBundle\Entity\Kunde $kunden)
-    {
-        $this->kunden[] = $kunden;
-
-        return $this;
-    }
-
-    /**
-     * Remove kunden
-     *
-     * @param \AppBundle\Entity\Kunde $kunden
-     */
-    public function removeKunden(\AppBundle\Entity\Kunde $kunden)
-    {
-        $this->kunden->removeElement($kunden);
-    }
-
-    /**
-     * Get kunden
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getKunden()
-    {
-        return $this->kunden;
-    }
 }
+
