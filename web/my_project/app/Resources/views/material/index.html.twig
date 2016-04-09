@@ -19,23 +19,25 @@
                 <td>{{ material.typ }}</td>
                 <td>{{ material.preis }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('material_show', { 'id': material.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('material_edit', { 'id': material.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                        
+                        <li class="list-inline">
+                      <div class="btn-group" role="group" aria-label="...">
+  <a href="{{ path('material_show', { 'id': material.id }) }}" class="btn btn-info">show</a>
+  <a href="{{ path('material_edit', { 'id': material.id }) }}" class="btn btn-primary">edit</a>
+  <a  class="btn btn-danger">delete</a>
+</div>
+ </li>
+                
+                
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('material_new') }}">Neues Material anlegen</a>
+
+        <li class="list-inline">
+            <a class="btn btn-success" href="{{ path('material_new') }}">Neues Material anlegen</a>
         </li>
-    </ul>
+
 {% endblock %}
