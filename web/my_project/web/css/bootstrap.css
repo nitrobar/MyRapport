@@ -168,6 +168,7 @@ textarea {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  font-size: 5;
 }
 @media print {
   * {

@@ -12,11 +12,11 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
         {% for material in materials %}
             <tr>
                 <td><a href="{{ path('material_show', { 'id': material.id }) }}">{{ material.id }}</a></td>
-                <td>{{ material.typ }}</td>
+                <td >{{ material.typ }}</td>
                 <td>{{ material.preis }}</td>
                 <td>
                         

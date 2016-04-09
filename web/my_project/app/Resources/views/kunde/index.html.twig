@@ -14,7 +14,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
         {% for kunde in kundes %}
             <tr>
                 <td><a href="{{ path('kunde_show', { 'id': kunde.id }) }}">{{ kunde.id }}</a></td>
