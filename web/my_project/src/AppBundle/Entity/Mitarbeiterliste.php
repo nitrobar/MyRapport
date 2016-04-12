@@ -5,18 +5,18 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Materialliste
+ * Mitarbeiterliste
  *
- * @ORM\Table(name="materialliste")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MateriallisteRepository")
+ * @ORM\Table(name="mitarbeiterliste")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MitarbeiterlisteRepository")
  */
-class Materialliste
-{	
+class Mitarbeiterliste
+{
 	
 	/**
-	 * @ORM\OneToMany(targetEntity="Material", mappedBy="materialliste")
+	 * @ORM\OneToMany(targetEntity="Mitarbeiter", mappedBy="mitarbeiterliste")
 	 */
-	private $materialien;
+	private $mitarbeiter;
 	
     /**
      * @var int
@@ -30,7 +30,7 @@ class Materialliste
     /**
      * @var string
      *
-     * @ORM\Column(name="Name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -50,7 +50,7 @@ class Materialliste
      *
      * @param string $name
      *
-     * @return Materialliste
+     * @return Mitarbeiterliste
      */
     public function setName($name)
     {
@@ -73,40 +73,40 @@ class Materialliste
      */
     public function __construct()
     {
-        $this->materialien = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mitarbeiter = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add materialien
+     * Add mitarbeiter
      *
-     * @param \AppBundle\Entity\Material $materialien
+     * @param \AppBundle\Entity\Mitarbeiter $mitarbeiter
      *
-     * @return Materialliste
+     * @return Mitarbeiterliste
      */
-    public function addMaterialien(\AppBundle\Entity\Material $materialien)
+    public function addMitarbeiter(\AppBundle\Entity\Mitarbeiter $mitarbeiter)
     {
-        $this->materialien[] = $materialien;
+        $this->mitarbeiter[] = $mitarbeiter;
 
         return $this;
     }
 
     /**
-     * Remove materialien
+     * Remove mitarbeiter
      *
-     * @param \AppBundle\Entity\Material $materialien
+     * @param \AppBundle\Entity\Mitarbeiter $mitarbeiter
      */
-    public function removeMaterialien(\AppBundle\Entity\Material $materialien)
+    public function removeMitarbeiter(\AppBundle\Entity\Mitarbeiter $mitarbeiter)
     {
-        $this->materialien->removeElement($materialien);
+        $this->mitarbeiter->removeElement($mitarbeiter);
     }
 
     /**
-     * Get materialien
+     * Get mitarbeiter
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMaterialien()
+    public function getMitarbeiter()
     {
-        return $this->materialien;
+        return $this->mitarbeiter;
     }
 }
