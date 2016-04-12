@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Kunde;
 use AppBundle\Form\KundeType;
+use AppBundle\Entity\Kundenliste;
 
 /**
  * Kunde controller.
@@ -41,15 +42,27 @@ class KundeController extends Controller
      */
     public function newAction(Request $request)
     {
-        $kunde = new Kunde();
+        $kunde = new Kunde();   
+        
         $form = $this->createForm('AppBundle\Form\KundeType', $kunde);
         $form->handleRequest($request);
-
+        
+//---------------------neu----------------------------------------------------
+        $kundenliste = new Kundenliste();
+		$name = $form->get('name')->getData();	
+		$kundenliste->setName($name);		
+//---------------------neu----------------------------------------------------
+               
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($kunde);
-            $em->flush();
+            
+//---------------------neu----------------------------------------------------
+            $em->persist($kundenliste);
+//---------------------neu----------------------------------------------------
 
+            $em->flush();
+            
             return $this->redirectToRoute('kunde_show', array('id' => $kunde->getId()));
         }
 
@@ -65,9 +78,10 @@ class KundeController extends Controller
      * @Route("/{id}", name="kunde_show")
      * @Method("GET")
      */
+    
     public function showAction(Kunde $kunde)
     {
-        $deleteForm = $this->createDeleteForm($kunde);
+       $deleteForm = $this->createDeleteForm($kunde);
 
         return $this->render('kunde/show.html.twig', array(
             'kunde' => $kunde,

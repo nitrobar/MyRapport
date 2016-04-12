@@ -130,5 +130,28 @@ class Mitarbeiter
     {
         return $this->funktion;
     }
-}
 
+    /**
+     * Set mitarbeiterliste
+     *
+     * @param \AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste
+     *
+     * @return Mitarbeiter
+     */
+    public function setMitarbeiterliste(\AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste = null)
+    {
+        $this->mitarbeiterliste = $mitarbeiterliste;
+
+        return $this;
+    }
+
+    /**
+     * Get mitarbeiterliste
+     *
+     * @return \AppBundle\Entity\Mitarbeiterliste
+     */
+    public function getMitarbeiterliste()
+    {
+        return $this->mitarbeiterliste;
+    }
+}

@@ -19,7 +19,7 @@ class MaterialType extends AbstractType
         $builder
             ->add('typ')
             ->add('preis')
-            ->add('materialliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Materialliste', 'choice_label' => 'name', ));
+            ->add('materialliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Materialliste', 'choice_label' => 'name', ));      	
     }
         
     

@@ -12,9 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Kundenliste
 {
-	
+	//neu --> @ORM\OneToMany(targetEntity="Projekt", mappedBy="kundenliste")
 	/**
 	 * @ORM\OneToMany(targetEntity="Kunde", mappedBy="kundenliste")
+	 * @ORM\OneToMany(targetEntity="Projekt", mappedBy="kundenliste")
 	 */
 	private $kunden;
 	

@@ -68,5 +68,45 @@ class Mitarbeiterliste
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->mitarbeiter = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add mitarbeiter
+     *
+     * @param \AppBundle\Entity\Mitarbeiter $mitarbeiter
+     *
+     * @return Mitarbeiterliste
+     */
+    public function addMitarbeiter(\AppBundle\Entity\Mitarbeiter $mitarbeiter)
+    {
+        $this->mitarbeiter[] = $mitarbeiter;
+
+        return $this;
+    }
+
+    /**
+     * Remove mitarbeiter
+     *
+     * @param \AppBundle\Entity\Mitarbeiter $mitarbeiter
+     */
+    public function removeMitarbeiter(\AppBundle\Entity\Mitarbeiter $mitarbeiter)
+    {
+        $this->mitarbeiter->removeElement($mitarbeiter);
+    }
+
+    /**
+     * Get mitarbeiter
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMitarbeiter()
+    {
+        return $this->mitarbeiter;
+    }
+}
