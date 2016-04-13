@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stundeneintrag</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stundeneintrag.id }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Leistung</th>
+                <td>{{ stundeneintrag.leistung }}</td>
+            </tr>
+            <tr>
+                <th>Std</th>
+                <td>{{ stundeneintrag.std }}</td>
+            </tr>
+            <tr>
+                <th>Beitragprostd</th>
+                <td>{{ stundeneintrag.beitragProStd }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ stundeneintrag.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stundeneintrag_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

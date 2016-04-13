@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stundeneintrag list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datum</th>
+                <th>Leistung</th>
+                <th>Std</th>
+                <th>Beitragprostd</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stundeneintrag in stundeneintrags %}
+            <tr>
+                <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ stundeneintrag.leistung }}</td>
+                <td>{{ stundeneintrag.std }}</td>
+                <td>{{ stundeneintrag.beitragProStd }}</td>
+                <td>{{ stundeneintrag.total }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stundeneintrag_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

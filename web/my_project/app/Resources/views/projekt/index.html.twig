@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projekt list</h1>
+    <h1>Projektübersicht</h1>
 
     <table class="table table-striped ">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Nr.</th>
+                <th>Kunde</th>
                 <th>Projektname</th>
                 <th>Actions</th>
             </tr>
@@ -15,6 +16,7 @@
         {% for projekt in projekts %}
             <tr>
                 <td><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.id }}</a></td>
+                <td>{{ projekt.kundenliste.name }}</td>
                 <td>{{ projekt.projektname }}</td>
                 <td>
                 

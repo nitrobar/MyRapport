@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Material;
 use AppBundle\Form\MaterialType;
+use AppBundle\Entity\Materialliste;
 
 /**
  * Material controller.
@@ -44,10 +45,21 @@ class MaterialController extends Controller
         $material = new Material();
         $form = $this->createForm('AppBundle\Form\MaterialType', $material);
         $form->handleRequest($request);
+        
+        //----------------fügt das neu erstellte Material der Liste hinzu-------------
+        $materialliste = new Materialliste();
+        $typ= $form->get('typ')->getData();
+        $materialliste->setName($typ);
+        //---------------------neu----------------------------------------------------
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($material);
+            
+            //---------------------neu----------------------------------------------------
+            $em->persist($materialliste);
+            //---------------------neu----------------------------------------------------
+            
             $em->flush();
 
             return $this->redirectToRoute('material_show', array('id' => $material->getId()));
