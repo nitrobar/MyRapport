@@ -6,13 +6,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-     */
-   
+	 * @Security("is_granted('ROLE_ADMIN')")
+	 */
+	
    
     public function indexAction(Request $request)
     {
@@ -20,8 +23,7 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
-    }
-    
-    
-    
+       
+    } 
+   
 }
