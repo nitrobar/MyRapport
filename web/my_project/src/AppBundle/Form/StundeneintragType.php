@@ -23,9 +23,10 @@ class StundeneintragType extends AbstractType
         	->add('mitarbeiterliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Mitarbeiterliste', 'choice_label' => 'name', ))
             ->add('leistung')
             ->add('std')
-            ->add('beitragProStd')
+            //->add('beitragProStd');
         	//->add('beitragProStd', 'text', array('label' => 'Field','data' => 'Default value'))
-            ->add('total');
+           // ->add('total');
+    	;
     }
     
     /**

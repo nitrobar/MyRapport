@@ -45,12 +45,26 @@ class StundeneintragController extends Controller
         $stundeneintrag = new Stundeneintrag();
         $form = $this->createForm('AppBundle\Form\StundeneintragType', $stundeneintrag);
         $form->handleRequest($request);
-
-        
+       
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+//--------------------Daten von Mitarbeiter auslesen-----------------------------------------
+            $mitarbeiter_auswahl = $form->get('mitarbeiterliste')->getData();
+            $id = $mitarbeiter_auswahl->getId();
+            
+            
+            $mitarbeiter = $em->getRepository('AppBundle:Mitarbeiter')->findOneBy(array('id' => $id));
+            $stundeneintrag->setBeitragProStd($mitarbeiter->getStundenansatz());
+//--------------------Daten von Mitarbeiter auslesen----------------------------------------
+          
+//--------------------total berechen----------------------------------------------
+            $std = $form->get('std')->getData();
+            $total = $std*$mitarbeiter->getStundenansatz();
+            $stundeneintrag->setTotal($total);
+//--------------------total berechen----------------------------------------------
+            
             $em->persist($stundeneintrag);
-                                   
             $em->flush();
 
             return $this->redirectToRoute('stundeneintrag_show', array('id' => $stundeneintrag->getId()));

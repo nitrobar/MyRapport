@@ -11,8 +11,12 @@
             </tr>
             <tr>
                 <th>Datum</th>
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
             </tr>
+			            <tr>
+			                <th>Mitarbeiter</th>
+			                <td>{{ stundeneintrag.mitarbeiterliste.name }}</td>
+			            </tr>
             <tr>
                 <th>Leistung</th>
                 <td>{{ stundeneintrag.leistung }}</td>

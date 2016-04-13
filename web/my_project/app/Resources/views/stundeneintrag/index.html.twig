@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Datum</th>
+                <th>Mitarbeiter</th>
                 <th>Leistung</th>
                 <th>Std</th>
                 <th>Beitragprostd</th>
@@ -19,7 +20,8 @@
         {% for stundeneintrag in stundeneintrags %}
             <tr>
                 <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
+                <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
                 <td>{{ stundeneintrag.std }}</td>
                 <td>{{ stundeneintrag.beitragProStd }}</td>
