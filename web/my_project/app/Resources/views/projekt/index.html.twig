@@ -22,10 +22,10 @@
                 
                  <li class="list-inline">
                       <div class="btn-group" role="group" aria-label="...">
-  <a href="{{ path('projekt_show', { 'id': projekt.id }) }}" class="btn btn-info">show</a>
-  <a href="{{ path('projekt_edit', { 'id': projekt.id }) }}" class="btn btn-primary">edit</a>
+  <a href="{{ path('projekt_show', { 'id': projekt.id }) }}" class="btn btn-info">Anzeigen</a>
+  <a href="{{ path('projekt_edit', { 'id': projekt.id }) }}" class="btn btn-primary">Anpassen</a>
   
-  <a  class="btn btn-danger">delete</a>
+  <a  class="btn btn-danger">Löschen</a>
 </div>
  </li>
                 
@@ -38,7 +38,7 @@
 
   
         <li class="list-inline">
-            <a class="btn btn-success" href="{{ path('projekt_new') }}">Create a new entry</a>
+            <a class="btn btn-success" href="{{ path('projekt_new') }}">Neuer Eintrag</a>
         </li>
   
 {% endblock %}

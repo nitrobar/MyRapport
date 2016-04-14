@@ -24,14 +24,14 @@
 
    
         <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('material_index') }}">Back to the list</a>
+            <a class="btn btn-info" href="{{ path('material_index') }}">Zurück</a>
         </li>
         <li class="list-inline">
-            <a class="btn btn-primary" href="{{ path('material_edit', { 'id': material.id }) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ path('material_edit', { 'id': material.id }) }}">Anpassen</a>
         </li>
         <li class="list-inline">
             {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Löschen">
             {{ form_end(delete_form) }}
         </li>
    

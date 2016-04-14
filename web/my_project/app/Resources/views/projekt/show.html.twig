@@ -17,14 +17,14 @@
     </table>
     
     <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('projekt_index') }}">Back to the list</a>
+            <a class="btn btn-info" href="{{ path('projekt_index') }}">Zurück</a>
         </li>
         <li class="list-inline">
-            <a class="btn btn-primary" href="{{ path('projekt_edit', { 'id': projekt.id }) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ path('projekt_edit', { 'id': projekt.id }) }}">Anpassen</a>
         </li>
         <li class="list-inline">
             {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Löschen">
             {{ form_end(delete_form) }}
         </li>
     
