@@ -176,11 +176,11 @@ class Stundeneintrag
      *
      * @return Stundeneintrag
      */
-    public function setTotal($total)
+   
+ 	public function setTotal($total)
     {
         $this->total = $total;
-
-        return $this;
+        return $this;   
     }
 
     /**
@@ -192,5 +192,28 @@ class Stundeneintrag
     {
         return $this->total;
     }
-}
 
+    /**
+     * Set mitarbeiterliste
+     *
+     * @param \AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste
+     *
+     * @return Stundeneintrag
+     */
+    public function setMitarbeiterliste(\AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste = null)
+    {
+        $this->mitarbeiterliste = $mitarbeiterliste;
+
+        return $this;
+    }
+
+    /**
+     * Get mitarbeiterliste
+     *
+     * @return \AppBundle\Entity\Mitarbeiterliste
+     */
+    public function getMitarbeiterliste()
+    {
+        return $this->mitarbeiterliste;
+    }
+}

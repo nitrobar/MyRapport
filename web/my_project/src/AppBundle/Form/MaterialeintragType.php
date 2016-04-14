@@ -6,10 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class StundeneintragType extends AbstractType
+class MaterialeintragType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,12 +16,10 @@ class StundeneintragType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        
-        	->add('datum', DateType::class, array('input'  => 'datetime','widget' => 'choice',))
-        	->add('mitarbeiterliste', EntityType::class, array('label' => 'Mitarbeiter', 'class' => 'AppBundle\Entity\Mitarbeiterliste', 'choice_label' => 'name', ))
-            ->add('leistung')
-            ->add('std', TextType::class, array('label' => 'Stunden',))
-          ;
+            ->add('anzahl')
+            ->add('materialliste', EntityType::class, array( 'label' => 'Material', 'class' => 'AppBundle\Entity\Materialliste', 'choice_label' => 'name', ))
+    
+        ;
     }
     
     /**
@@ -32,7 +28,7 @@ class StundeneintragType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Stundeneintrag'
+            'data_class' => 'AppBundle\Entity\Materialeintrag'
         ));
     }
 }
