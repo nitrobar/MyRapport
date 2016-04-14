@@ -27,9 +27,9 @@
                         <li class="list-inline">
                             
                         <div class="btn-group" role="group" aria-label="...">
-  <a href="{{ path('kunde_show', { 'id': kunde.id }) }}" class="btn btn-info">show</a>
-  <a href="{{ path('kunde_edit', { 'id': kunde.id }) }}" class="btn btn-primary">edit</a>
-   <a  class="btn btn-danger">delete</a>
+  <a href="{{ path('kunde_show', { 'id': kunde.id }) }}" class="btn btn-info">Anzeigen</a>
+  <a href="{{ path('kunde_edit', { 'id': kunde.id }) }}" class="btn btn-primary">Ändern</a>
+   <a  class="btn btn-danger">Löschen</a>
 </div>
                         
                         </li>
@@ -43,7 +43,7 @@
 
    
         <li class="list-inline">
-            <a class="btn btn-success"  href="{{ path('kunde_new') }}">Neuer Kunde erstellen</a>
+            <a class="btn btn-success"  href="{{ path('kunde_new') }}">Neuer Eintrag</a>
         </li>
 
 {% endblock %}

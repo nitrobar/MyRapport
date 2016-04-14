@@ -106,12 +106,16 @@ class MaterialController extends Controller
 
             return $this->redirectToRoute('material_edit', array('id' => $material->getId()));
         }
+        
+       
 
         return $this->render('material/edit.html.twig', array(
             'material' => $material,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+        
+      
     }
 
     /**

@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Stundeneintrag list</h1>
 
-    <table>
+   <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,23 +27,24 @@
                 <td>{{ stundeneintrag.beitragProStd }}</td>
                 <td>{{ stundeneintrag.total }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                
+                
+                 <li class="list-inline">
+                            
+                        <div class="btn-group" role="group" aria-label="...">
+  <a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}" class="btn btn-info">Anzeigen</a>
+  <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}" class="btn btn-primary">Ändern</a>
+   <a  class="btn btn-danger">Löschen</a>
+</div>
+                      
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('stundeneintrag_new') }}">Create a new entry</a>
+        <li class="list-inline">
+            <a class="btn btn-success"  href="{{ path('stundeneintrag_new') }}">Neuer Kunde erstellen</a>
         </li>
-    </ul>
+  
 {% endblock %}
