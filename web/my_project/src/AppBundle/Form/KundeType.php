@@ -19,8 +19,8 @@ class KundeType extends AbstractType
             ->add('name')
             ->add('adresse')
             ->add('ort')
-            ->add('telefon')
-            ->add('kundenliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Kundenliste', 'choice_label' => 'name', ));
+            ->add('telefon');
+       //   ->add('kundenliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Kundenliste', 'choice_label' => 'name', ));
     }
     
     /**
