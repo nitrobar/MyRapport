@@ -13,7 +13,6 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
-	 * @Security("is_granted('ROLE_ADMIN')")
 	 */
 	
    
