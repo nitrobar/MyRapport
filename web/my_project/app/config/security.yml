@@ -2,23 +2,17 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
-    firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-               
-        default:
-            anonymous: ~
-            http_basic: ~
-            
+    firewalls:       
         main:
             anonymous: ~
             form_login:
                 login_path: login
                 check_path: login
-            
-            
+    
+    access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: ROLE_ADMIN }
+         
     providers:
         in_memory:
             memory:
@@ -29,17 +23,9 @@ security:
                     admin:
                         password: admin
                         roles: 'ROLE_ADMIN'
-            
-    access_control:
-        # require ROLE_ADMIN for /admin*
-        - { path: ^/material, roles: ROLE_ADMIN }
-        
+  
     encoders:
-        Symfony\Component\Security\Core\User\User:
-            algorithm: bcrypt
-            cost: 12
-            
-            
+         Symfony\Component\Security\Core\User\User: plaintext
           
    
         
