@@ -9,7 +9,10 @@
         <div id="container">
             <div id="Login">
                 <h1>Welcome to myRapport </h1>
-                <a class="navbar-brand"><img alt="Logo" href="{{ path('homepage') }}" src="/Logo_Transparent.png" height="500" width="800"></a>
+                <a class="navbar-brand"><img alt="Logo" href="{{ path('homepage') }}" src="/Logo_Transparent.png" height="300" width="800"></a>
+            	<form action="{{ path('logout') }}" method="post" >
+			    	<button type="submit">Logout</button>
+    			</form>
             </div>
         </div>
     </div> 
@@ -18,7 +21,7 @@
 
 {% block stylesheets %}
 <style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; height:"1000"}
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif;}
     h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
     h1 { font-size: 36px; }
     h2 { font-size: 21px; margin-bottom: 1em; }
@@ -32,6 +35,7 @@
     #welcome h1 span { display: block; font-size: 75%; }
     #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
     #icon-book { display: none; }
+    #login{border-style: solid; }
 
     @media (min-width: 768px) {
         #wrapper { width: 80%; margin: 2em auto; }

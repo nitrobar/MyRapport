@@ -7,12 +7,15 @@ security:
             anonymous: ~
             form_login:
                 login_path: login
-                check_path: login
+                check_path: login      
+            logout:
+                path:   /logout
+                target: /login
     
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
     - { path: ^/, roles: ROLE_ADMIN }
-    - { path: ^/, roles: ROLE_USER }
+    - { path: ^/projekt, roles: ROLE_USER }
          
 
     providers:
@@ -27,7 +30,7 @@ security:
                         roles: 'ROLE_ADMIN' 
                     Damian:
                         password: admin
-                        roles: 'ROLE_ADMIN'  
+                        roles: 'ROLE_USER'  
     encoders:
          Symfony\Component\Security\Core\User\User: plaintext
 
