@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stundeneintrag</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ stundeneintrag.id }}</td>
+            </tr>
+            <tr>
+                <th>Datum</th>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+			            <tr>
+			                <th>Mitarbeiter</th>
+			                <td>{{ stundeneintrag.mitarbeiterliste.name }}</td>
+			            </tr>
+            <tr>
+                <th>Leistung</th>
+                <td>{{ stundeneintrag.leistung }}</td>
+            </tr>
+            <tr>
+                <th>Std</th>
+                <td>{{ stundeneintrag.std }}</td>
+            </tr>
+            <tr>
+                <th>Beitragprostd</th>
+                <td>{{ stundeneintrag.beitragProStd }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ stundeneintrag.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+      <li class="list-inline">
+            <a class="btn btn-info" href="{{ path('stundeneintrag_index') }}">Zurück</a>
+        </li>
+        <li class="list-inline">
+            <a class="btn btn-primary" href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}">Ändern</a>
+        </li>
+        <li class="list-inline">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Löschen">
+            {{ form_end(delete_form) }}
+        </li>
+   
+
+{% endblock %}

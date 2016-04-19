@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Kunde editieren</h1>
+    <h1>Stundeneintrag edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input class="btn btn-success"  type="submit" value="Speichern" />
+        <input class="btn btn-success" type="submit" value="Speichern" />
     {{ form_end(edit_form) }}
 
    
-        <li class="list-inline">
-            <a class="btn btn-info"  href="{{ path('kunde_index') }}">Zurück</a>
+       <li class="list-inline">
+            <a class="btn btn-info" href="{{ path('stundeneintrag_index') }}">Zurück</a>
         </li>
         <li class="list-inline">
             {{ form_start(delete_form) }}

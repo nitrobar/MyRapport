@@ -25,24 +25,20 @@
                 <th>Telefon</th>
                 <td>{{ kunde.telefon }}</td>
             </tr>
-		            <tr>
-		                <th>Liste</th>
-		                <td>{{ kunde.kundenliste.name}}</td>              
-		            </tr>
+
         </tbody>
     </table>
 
-    <ul>
         <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('kunde_index') }}">Back to the list</a>
+            <a class="btn btn-info" href="{{ path('kunde_index') }}">Zurück</a>
         </li>
         <li class="list-inline">
-            <a class="btn btn-primary" href="{{ path('kunde_edit', { 'id': kunde.id }) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ path('kunde_edit', { 'id': kunde.id }) }}">Ändern</a>
         </li>
         <li class="list-inline">
             {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Delete">
+                <input class="btn btn-danger" type="submit" value="Löschen">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+   
 {% endblock %}

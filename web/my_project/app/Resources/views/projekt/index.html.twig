@@ -1,39 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Projekt list</h1>
+    <h1>Projektübersicht</h1>
 
-    <table>
+    <table class="table table-striped ">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Nr.</th>
+                <th>Kunde</th>
                 <th>Projektname</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="small">
         {% for projekt in projekts %}
             <tr>
                 <td><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.id }}</a></td>
+                <td>{{ projekt.kundenliste.name }}</td>
                 <td>{{ projekt.projektname }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('projekt_show', { 'id': projekt.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('projekt_edit', { 'id': projekt.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                
+                 <li class="list-inline">
+                      <div class="btn-group" role="group" aria-label="...">
+  <a href="{{ path('projekt_show', { 'id': projekt.id }) }}" class="btn btn-info">Anzeigen</a>
+  <a href="{{ path('projekt_edit', { 'id': projekt.id }) }}" class="btn btn-primary">Anpassen</a>
+  
+  <a  class="btn btn-danger">Löschen</a>
+</div>
+ </li>
+                
+                    
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('projekt_new') }}">Create a new entry</a>
+  
+        <li class="list-inline">
+            <a class="btn btn-success" href="{{ path('projekt_new') }}">Neuer Eintrag</a>
         </li>
-    </ul>
+  
 {% endblock %}

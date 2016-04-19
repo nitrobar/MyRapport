@@ -5,12 +5,11 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input class="btn btn-success" type="submit" value="Anpassen" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('projekt_index') }}">Back to the list</a>
+ <li class="list-inline">
+            <a class="btn btn-info" href="{{ path('projekt_index') }}">Zurück</a>
         </li>
-    </ul>
+
 {% endblock %}

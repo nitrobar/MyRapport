@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class KundeType extends AbstractType
+class MaterialeintragType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,11 +16,10 @@ class KundeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('adresse')
-            ->add('ort')
-            ->add('telefon');
-       //   ->add('kundenliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Kundenliste', 'choice_label' => 'name', ));
+            ->add('anzahl')
+            ->add('materialliste', EntityType::class, array( 'label' => 'Material', 'class' => 'AppBundle\Entity\Materialliste', 'choice_label' => 'name', ))
+    
+        ;
     }
     
     /**
@@ -29,7 +28,7 @@ class KundeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-           'data_class' => 'AppBundle\Entity\Kunde' 		
+            'data_class' => 'AppBundle\Entity\Materialeintrag'
         ));
     }
 }

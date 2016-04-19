@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Materialeintrag list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Stückzahl</th>
+                <th>Betrag/Stk.</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materialeintrag in materialeintrags %}
+            <tr>
+                <td><a href="{{ path('materialeintrag_show', { 'id': materialeintrag.id }) }}">{{ materialeintrag.id }}</a></td>
+                <td>{{ materialeintrag.anzahl }}</td>
+                <td>{{ materialeintrag.betragProAnzahl }}</td>
+                <td>{{ materialeintrag.total }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('materialeintrag_show', { 'id': materialeintrag.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('materialeintrag_edit', { 'id': materialeintrag.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('materialeintrag_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

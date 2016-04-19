@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stundeneintrag list</h1>
+
+   <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datum</th>
+                <th>Mitarbeiter</th>
+                <th>Leistung</th>
+                <th>Std</th>
+                <th>Beitragprostd</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stundeneintrag in stundeneintrags %}
+            <tr>
+                <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
+                <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
+                <td>{{ stundeneintrag.leistung }}</td>
+                <td>{{ stundeneintrag.std }}</td>
+                <td>{{ stundeneintrag.beitragProStd }}</td>
+                <td>{{ stundeneintrag.total }}</td>
+                <td>
+                
+                
+                 <li class="list-inline">
+                            
+                        <div class="btn-group" role="group" aria-label="...">
+  <a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}" class="btn btn-info">Anzeigen</a>
+  <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}" class="btn btn-primary">Ändern</a>
+   <a  class="btn btn-danger">Löschen</a>
+</div>
+                      
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <li class="list-inline">
+            <a class="btn btn-success"  href="{{ path('stundeneintrag_new') }}">Neuer Kunde erstellen</a>
+        </li>
+  
+{% endblock %}
