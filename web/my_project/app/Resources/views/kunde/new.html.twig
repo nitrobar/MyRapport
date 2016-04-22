@@ -1,7 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <h1>Kunde erstellen</h1>
+
+
+ <script>
+	document.getElementById("kunde").className += "active";
+
+	</script>
+	
+	
+    <h1>Kunde creation</h1>
+
 
     {{ form_start(form) }}
         {{ form_widget(form) }}

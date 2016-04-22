@@ -7,14 +7,18 @@ security:
             anonymous: ~
             form_login:
                 login_path: login
-                check_path: login      
+                check_path: login 
+                   
             logout:
                 path:   /logout
                 target: /login
     
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-    - { path: ^/, roles: ROLE_ADMIN }
+    - { path: ^/kunden/new, roles: ROLE_ADMIN }
+    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+    
+    
          
 
     providers:
@@ -23,7 +27,7 @@ security:
                 users:
                     Mitarbeiter:
                         password: pass
-                        roles: 'ROLE_ADMIN'
+                        roles: 'ROLE_USER'
                     Chef:
                         password: admin
                         roles: 'ROLE_ADMIN' 

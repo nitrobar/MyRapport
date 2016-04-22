@@ -24,6 +24,7 @@ class ProjektController extends Controller
      */
     public function indexAction()
     {
+    	
         $em = $this->getDoctrine()->getManager();
 
         $projekts = $em->getRepository('AppBundle:Projekt')->findAll();
