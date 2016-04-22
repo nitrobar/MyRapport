@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+ <script>
+	document.getElementById("projekt").className += "active";
+
+	</script>
+	
     <h1>Projekt edit</h1>
 
     {{ form_start(edit_form) }}

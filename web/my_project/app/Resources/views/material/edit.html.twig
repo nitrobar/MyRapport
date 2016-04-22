@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+ <script>
+	document.getElementById("material").className += "active";
+
+	</script>
+	
     <h1>Material editieren</h1>
 
     {{ form_start(edit_form) }}
