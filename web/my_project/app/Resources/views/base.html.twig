@@ -38,7 +38,7 @@
          <span class = "icon-bar"></span>
       </button>
 
-      <a class="navbar-brand"><img alt="Logo" href="{{ path('homepage') }}" src="/MyRapport_Icon.png" height="50" width="50"></a>
+      <a class="navbar-brand" href="/"><img alt="Logo" src="/MyRapport_Icon.png" height="50" width="50"></a> 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,7 +50,11 @@
         <li> <a href="{{ path('projekt_index') }}">Projekte</a> </li>
 		<li> <a href="{{ path('material_index') }}">Material</a> </li>
         <li> <a href="{{ path('kunde_index') }}">Kunden</a> </li>
+
         
+
+        <li> <a href="{{ path('logout') }}">Logout</a> </li>
+
        
 {#         <li class="dropdown">#}
 {#           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>#}
@@ -73,7 +77,7 @@
 {#         <button type="submit" class="btn btn-default">Submit</button>#}
 {#       </form>#}
       <ul class="nav navbar-nav navbar-right">
-        <li><a>User  <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </a> </li>
+        <li><a>{% if is_granted("ROLE_ADMIN")%}{{ app.user.username }}{% endif %} <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </a> </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

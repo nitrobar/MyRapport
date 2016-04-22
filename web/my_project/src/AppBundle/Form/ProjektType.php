@@ -18,8 +18,8 @@ class ProjektType extends AbstractType
     {
         $builder
             ->add('projektname')
-            ->add('kundenliste', EntityType::class, array( 'class' => 'AppBundle\Entity\Kundenliste', 'choice_label' => 'name', ));
-       
+            ->add('kundenliste', EntityType::class, array('label' => 'Kunde', 'class' => 'AppBundle\Entity\Kundenliste', 'choice_label' => 'name', ))
+        ;   
     }
     
     /**

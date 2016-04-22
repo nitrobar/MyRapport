@@ -46,14 +46,14 @@ class Stundeneintrag
      *
      * @ORM\Column(name="std", type="float")
      */
-    private $std = 2;
+    private $std;
 
     /**
      * @var int
      *
      * @ORM\Column(name="beitragProStd", type="integer")
      */
-    private $beitragProStd = 80;
+    private $beitragProStd;
 
     /**
      * @var int
