@@ -10,6 +10,9 @@ use AppBundle\Entity\Material;
 use AppBundle\Form\MaterialType;
 use AppBundle\Entity\Materialliste;
 
+use AppBundle\Entity\Kunde;
+use AppBundle\Form\KundeType;
+use AppBundle\Entity\Kundenliste;
 /**
  * Material controller.
  *
@@ -25,14 +28,16 @@ class MaterialController extends Controller
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $materials = $em->getRepository('AppBundle:Material')->findAll();
 
         return $this->render('material/index.html.twig', array(
-            'materials' => $materials,
+            'materials' => $materials, 
         ));
     }
+
 
     /**
      * Creates a new Material entity.

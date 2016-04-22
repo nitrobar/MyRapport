@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projekt
 {
+	 /**
+	 * @ORM\OneToMany(targetEntity="Stundeneintrag", mappedBy="stundeneintrag")
+	 */
+	private $studneneintraege;
+	
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kundenliste", inversedBy="kunden")
@@ -92,5 +97,46 @@ class Projekt
     public function getKundenliste()
     {
         return $this->kundenliste;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->studneneintraege = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add studneneintraege
+     *
+     * @param \AppBundle\Entity\Stundeneintrag $studneneintraege
+     *
+     * @return Projekt
+     */
+    public function addStudneneintraege(\AppBundle\Entity\Stundeneintrag $studneneintraege)
+    {
+        $this->studneneintraege[] = $studneneintraege;
+
+        return $this;
+    }
+
+    /**
+     * Remove studneneintraege
+     *
+     * @param \AppBundle\Entity\Stundeneintrag $studneneintraege
+     */
+    public function removeStudneneintraege(\AppBundle\Entity\Stundeneintrag $studneneintraege)
+    {
+        $this->studneneintraege->removeElement($studneneintraege);
+    }
+
+    /**
+     * Get studneneintraege
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStudneneintraege()
+    {
+        return $this->studneneintraege;
     }
 }

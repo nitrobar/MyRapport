@@ -23,8 +23,7 @@
                         <li class="list-inline">
                       <div class="btn-group" role="group" aria-label="...">
   <a href="{{ path('material_show', { 'id': material.id }) }}" class="btn btn-info">Anzeigen</a>
-  <a href="{{ path('material_edit', { 'id': material.id }) }}" class="btn btn-primary">Anpassen</a>
-  
+  <a href="{{ path('material_edit', { 'id': material.id }) }}" class="btn btn-primary">Ändern</a>
   <a href="{{ path('material_delete', {'id': material.id}) }}" class="btn btn-danger">Löschen</a>
   
   
@@ -43,5 +42,6 @@
         <li class="list-inline">
             <a class="btn btn-success" href="{{ path('material_new') }}">Neues Material anlegen</a>
         </li>
+
 
 {% endblock %}
