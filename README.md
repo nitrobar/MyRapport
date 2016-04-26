@@ -91,15 +91,15 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
 
 ## Installation MyRapport
 1. Datenbank installieren
-```
-sudo apt-get install php5-sqlite php5-pgsql
-```
+	```
+	sudo apt-get install php5-sqlite php5-pgsql
+	```
 
 2. Installer installieren
-```
-$ sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
-$ sudo chmod a+x /usr/local/bin/symfony
-```
+	```
+	$ sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+	$ sudo chmod a+x /usr/local/bin/symfony
+	```
 
 3. GIT-Projekt von MyRapport clonen
 
@@ -126,9 +126,9 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 ```
 5. Mit Doctrine die Tabellen erzeugen: 
-```
-$ php bin/console doctrine:schema:update --force
-```
+	```
+	$ php bin/console doctrine:schema:update --force
+	```
 
 6. Im Verzeichniss web/my_project den Server starten
 ```
