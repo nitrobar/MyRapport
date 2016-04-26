@@ -90,6 +90,9 @@ Ausgabe:
 Aufrufen der Webseite gibt die Startseite von Symphony aus.
 
 
+# Tutorial durchspielen
+Link: https://symfony.com/
+[Dokumentation direkt im Readme File des Notes Projects](projects/notes_project/README.md)
 
 # Symfony Cookbook
 
@@ -106,3 +109,6 @@ Wenn ein Projekt ausgecheckt wird, müssen erst die Vendor-Libraries mit Compose
 composer install
 ```
 
+## Symfony und AngularJS
+
+[Dokumentation AngularJS](AngularJSTutorial.md)
