@@ -130,7 +130,10 @@ parameters:
 $ php bin/console doctrine:schema:update --force
 ```
 
-
+6. Im Verzeichniss web/my_project den Server starten
+```
+php bin/console server:start
+```
 # Symfony Cookbook
 
 https://symfony.com/doc/current/cookbook/index.html
