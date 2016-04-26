@@ -103,37 +103,37 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
 
 3. GIT-Projekt von MyRapport clonen
 
-```
-git clone https://github.com/nitrobar/MyRapport.git
-```
+	```
+	git clone https://github.com/nitrobar/MyRapport.git
+	```
 
 4. Im Verzeichniss web/my_project composer ausführen: 
-```
-composer install
-```
-Datenbank-Parameter angeben:
-```
-parameters:
-    database_host: 127.0.0.1
-    database_port: 5432
-    database_name: myRapport
-    database_user: postgres
-    database_password: postgres
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
-    secret: ThisTokenIsNotSoSecretChangeIt
-```
+	```
+	composer install
+	```
+	Datenbank-Parameter angeben:
+	```
+	parameters:
+    	database_host: 127.0.0.1
+    	database_port: 5432
+    	database_name: myRapport
+    	database_user: postgres
+    	database_password: postgres
+    	mailer_transport: smtp
+    	mailer_host: 127.0.0.1
+    	mailer_user: null
+    	mailer_password: null
+    	secret: ThisTokenIsNotSoSecretChangeIt
+	```
 5. Mit Doctrine die Tabellen erzeugen: 
 	```
 	$ php bin/console doctrine:schema:update --force
 	```
 
 6. Im Verzeichniss web/my_project den Server starten
-```
-php bin/console server:start
-```
+	```
+	php bin/console server:start
+	```
 # Symfony Cookbook
 
 https://symfony.com/doc/current/cookbook/index.html
