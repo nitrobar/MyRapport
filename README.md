@@ -134,7 +134,8 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
 	```
 	php bin/console server:start
 	```
-# Symfony Cookbook
+
+## Symfony Cookbook
 
 https://symfony.com/doc/current/cookbook/index.html
 
@@ -143,9 +144,4 @@ https://symfony.com/doc/current/cookbook/index.html
 https://symfony.com/doc/current/cookbook/workflow/new_project_git.html
 
 
-Wenn ein Projekt ausgecheckt wird, müssen erst die Vendor-Libraries mit Composer installiert werden:
-
-```
-composer install
-```
 
