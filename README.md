@@ -89,6 +89,46 @@ Ausgabe:
 
 Aufrufen der Webseite gibt die Startseite von Symphony aus.
 
+## Installation MyRapport
+1. Datenbank installieren
+```
+sudo apt-get install php5-sqlite php5-pgsql
+```
+
+2. Installer installieren
+```
+$ sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+$ sudo chmod a+x /usr/local/bin/symfony
+```
+
+3. GIT-Projekt von MyRapport clonen
+
+```
+git clone https://github.com/nitrobar/MyRapport.git
+```
+
+4. Im Verzeichniss web/my_project composer ausführen: 
+```
+composer install
+```
+Datenbank-Parameter angeben:
+```
+parameters:
+    database_host: 127.0.0.1
+    database_port: 5432
+    database_name: myRapport
+    database_user: postgres
+    database_password: postgres
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+```
+5. Mit Doctrine die Tabellen erzeugen: 
+```
+$ php bin/console doctrine:schema:update --force
+```
 
 
 # Symfony Cookbook
