@@ -124,13 +124,21 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
     	mailer_user: null
     	mailer_password: null
     	secret: ThisTokenIsNotSoSecretChangeIt
+
+5. Dantenbanktreiber installieren und Apache Server neustarten
 	```
-5. Mit Doctrine die Tabellen erzeugen: 
+	sudo apt-get install php5-pgsql	
+	sudo service apache2 restart
+
 	```
+
+6. Mit Doctrine die Datenbank erstellen und danach die Tabellen erzeugen: 
+	```
+	$ php bin/console doctrine:database:create
 	$ php bin/console doctrine:schema:update --force
 	```
 
-6. Im Verzeichniss web/my_project den Server starten
+7. Im Verzeichniss web/my_project den Server starten
 	```
 	php bin/console server:start
 	```
