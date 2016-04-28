@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <h1>Projekt erstellen</h1>
+
 <script>
 	document.getElementById("projekt").className += "active";
 
 	</script>
     <h1>Projekt creation</h1>
 
+
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input class="btn btn-success" type="submit" value="Anpassen" />
+        <input class="btn btn-success" type="submit" value="Anlegen" />
     {{ form_end(form) }}
 
  <li class="list-inline">

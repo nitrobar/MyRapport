@@ -130,5 +130,28 @@ class Materialeintrag
     {
         return $this->total;
     }
-}
 
+    /**
+     * Set materialliste
+     *
+     * @param \AppBundle\Entity\Materialliste $materialliste
+     *
+     * @return Materialeintrag
+     */
+    public function setMaterialliste(\AppBundle\Entity\Materialliste $materialliste = null)
+    {
+        $this->materialliste = $materialliste;
+
+        return $this;
+    }
+
+    /**
+     * Get materialliste
+     *
+     * @return \AppBundle\Entity\Materialliste
+     */
+    public function getMaterialliste()
+    {
+        return $this->materialliste;
+    }
+}

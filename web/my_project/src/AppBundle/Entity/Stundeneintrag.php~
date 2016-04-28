@@ -12,10 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Stundeneintrag
 {
+	
+	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Mitarbeiterliste", inversedBy="mitarbeiter")
 	 */
 	private $mitarbeiterliste;
+	
+	
 	
 	
     /**
@@ -216,4 +220,6 @@ class Stundeneintrag
     {
         return $this->mitarbeiterliste;
     }
+
+    
 }

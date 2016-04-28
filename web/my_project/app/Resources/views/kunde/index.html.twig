@@ -35,12 +35,10 @@
                         <div class="btn-group" role="group" aria-label="...">
   <a href="{{ path('kunde_show', { 'id': kunde.id }) }}" class="btn btn-info">Anzeigen</a>
   <a href="{{ path('kunde_edit', { 'id': kunde.id }) }}" class="btn btn-primary">Ändern</a>
-   <a  class="btn btn-danger">Löschen</a>
+  <a  class="btn btn-danger">Löschen</a>
 </div>
                         
-                        </li>
-                      
-                  
+                      </li>                                   
                 </td>
             </tr>
         {% endfor %}
@@ -49,7 +47,7 @@
 
    
         <li class="list-inline">
-            <a class="btn btn-success"  href="{{ path('kunde_new') }}">Neuer Eintrag</a>
+            <a class="btn btn-success"  href="{{ path('kunde_new') }}">Neuer Kunde anlegen</a>
         </li>
 
 {% endblock %}
