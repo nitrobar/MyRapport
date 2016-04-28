@@ -124,6 +124,7 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
     	mailer_user: null
     	mailer_password: null
     	secret: ThisTokenIsNotSoSecretChangeIt
+	```
 
 5. Dantenbanktreiber installieren und Apache Server neustarten
 	```
