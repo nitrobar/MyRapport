@@ -16,6 +16,7 @@ class Kundenliste
 	/**
 	 * @ORM\OneToMany(targetEntity="Kunde", mappedBy="kundenliste")
 	 * @ORM\OneToMany(targetEntity="Projekt", mappedBy="kundenliste")
+	 * @ORM\OneToMany(targetEntity="Arbeitsrapport", mappedBy="kundenliste")
 	 */
 	private $kunden;
 	
@@ -36,6 +37,32 @@ class Kundenliste
     private $name;
 
 
+    
+    //-------------------------------------neu------------------------------------------
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255)
+     */
+    private $adresse;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ort", type="string", length=255)
+     */
+    private $ort;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefon", type="string", length=255)
+     */
+    private $telefon;
+    //-------------------------------------neu------------------------------------------
+    
+    
+    
     /**
      * Get id
      *
@@ -45,6 +72,10 @@ class Kundenliste
     {
         return $this->id;
     }
+    
+    
+       
+    
 
     /**
      * Set name
@@ -109,5 +140,77 @@ class Kundenliste
     public function getKunden()
     {
         return $this->kunden;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Kundenliste
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set ort
+     *
+     * @param string $ort
+     *
+     * @return Kundenliste
+     */
+    public function setOrt($ort)
+    {
+        $this->ort = $ort;
+
+        return $this;
+    }
+
+    /**
+     * Get ort
+     *
+     * @return string
+     */
+    public function getOrt()
+    {
+        return $this->ort;
+    }
+
+    /**
+     * Set telefon
+     *
+     * @param string $telefon
+     *
+     * @return Kundenliste
+     */
+    public function setTelefon($telefon)
+    {
+        $this->telefon = $telefon;
+
+        return $this;
+    }
+
+    /**
+     * Get telefon
+     *
+     * @return string
+     */
+    public function getTelefon()
+    {
+        return $this->telefon;
     }
 }

@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Stundeneintrag;
 use AppBundle\Form\StundeneintragType;
 use AppBundle\Entity\Mitarbeiterliste;
+use AppBundle\Entity\Stundeneintragliste;
+
 
 /**
  * Stundeneintrag controller.
@@ -17,6 +19,9 @@ use AppBundle\Entity\Mitarbeiterliste;
  */
 class StundeneintragController extends Controller
 {
+	var $myid;
+	
+	
     /**
      * Lists all Stundeneintrag entities.
      *
@@ -33,28 +38,40 @@ class StundeneintragController extends Controller
             'stundeneintrags' => $stundeneintrags,
         ));
     }
-
+    
+    
+    //@Route("/new", name="stundeneintrag_new")
     /**
      * Creates a new Stundeneintrag entity.
      *
-     * @Route("/new", name="stundeneintrag_new")
+     * 
+     * @Route("/new/{id}", name="stundeneintrag_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $id)
     {
+  	
+    	
         $stundeneintrag = new Stundeneintrag();
-        $form = $this->createForm('AppBundle\Form\StundeneintragType', $stundeneintrag);
-        $form->handleRequest($request);
+        $stundeneintragliste = new Stundeneintragliste();
+        
+     
+        
+        $form = $this->createForm('AppBundle\Form\StundeneintragType', $stundeneintrag, array('id'=>$id));
+        $form->handleRequest($request);      
        
         if ($form->isSubmitted() && $form->isValid()) {
+        	
+        	
+        	
             $em = $this->getDoctrine()->getManager();
             
 //--------------------Daten von Mitarbeiter auslesen-----------------------------------------
             $mitarbeiter_auswahl = $form->get('mitarbeiterliste')->getData();
-            $id = $mitarbeiter_auswahl->getId();
+            $mitarbeiterId = $mitarbeiter_auswahl->getId();
             
             
-            $mitarbeiter = $em->getRepository('AppBundle:Mitarbeiter')->findOneBy(array('id' => $id));
+            $mitarbeiter = $em->getRepository('AppBundle:Mitarbeiter')->findOneBy(array('id' => $mitarbeiterId));
             $stundeneintrag->setBeitragProStd($mitarbeiter->getStundenansatz());
 //--------------------Daten von Mitarbeiter auslesen----------------------------------------
           
@@ -64,14 +81,38 @@ class StundeneintragController extends Controller
             $stundeneintrag->setTotal($total);
 //--------------------total berechen----------------------------------------------
             
+            $stundeneintragliste->setBetragProStd($mitarbeiter->getStundenansatz());
+            $stundeneintragliste->setTotal($total);
+            
+            
+//---------------------------neu nach erstellen Stundeneintragliste-----------------------
+            
+            $datum = $form->get('datum')->getData();
+            $stundeneintragliste->setDatum($datum);
+            
+            $leistung = $form->get('leistung')->getData();
+            $stundeneintragliste->setLeistung($leistung);
+            
+            $std = $form->get('std')->getData();
+            $stundeneintragliste->setStd($std);                     
+           
+          
+            
+            $arbeitsrapportId = $form->get('arbeitsrapportId')->getData();   
+            $stundeneintragliste->setArbeitsrapportId($arbeitsrapportId);
+            
+            
             $em->persist($stundeneintrag);
+            $em->persist($stundeneintragliste);
+                  
+
             $em->flush();
 
-            return $this->redirectToRoute('stundeneintrag_show', array('id' => $stundeneintrag->getId()));
+            return $this->redirectToRoute('arbeitsrapport_show', array('id' => $arbeitsrapportId));
         }
 
         return $this->render('stundeneintrag/new.html.twig', array(
-            'stundeneintrag' => $stundeneintrag,
+            'stundeneintrag' => $stundeneintrag,	
             'form' => $form->createView(),
         ));
     }
@@ -154,4 +195,5 @@ class StundeneintragController extends Controller
             ->getForm()
         ;
     }
+ 
 }

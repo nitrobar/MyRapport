@@ -59,8 +59,18 @@ class KundeController extends Controller
         
 //---------------------neu----------------------------------------------------
         $kundenliste = new Kundenliste();
-		$name = $form->get('name')->getData();	
-		$kundenliste->setName($name);		
+		
+        $name = $form->get('name')->getData();	
+		$kundenliste->setName($name);	
+	
+		$adresse = $form->get('adresse')->getData();
+		$kundenliste->setAdresse($adresse);
+		
+		$ort = $form->get('ort')->getData();
+		$kundenliste->setOrt($ort);
+		
+		$telefon = $form->get('telefon')->getData();
+		$kundenliste->setTelefon($telefon);
 //---------------------neu----------------------------------------------------
                
         if ($form->isSubmitted() && $form->isValid()) {

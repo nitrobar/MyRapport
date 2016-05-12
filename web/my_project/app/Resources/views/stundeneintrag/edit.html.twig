@@ -10,11 +10,11 @@
 
    
        <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('stundeneintrag_index') }}">Zurück</a>
+            <a class="btn btn-info" href="{{ path('arbeitsrapport_show', { 'id': stundeneintrag.arbeitsrapportId }) }}">Zurück</a>
         </li>
         <li class="list-inline">
             {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Löschen">
+                <input class="btn btn-danger" type="submit" value="Löschen" onsubmit="document.location.href="{{ path('arbeitsrapport_show', { 'id': stundeneintrag.arbeitsrapportId }) }}"">
             {{ form_end(delete_form) }}
         </li>
    

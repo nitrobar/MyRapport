@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Arbeitsrapport</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for arbeitsrapport in arbeitsrapports %}
+            <tr>
+                <td><a href="{{ path('arbeitsrapport_show', { 'id': arbeitsrapport.id }) }}">{{ arbeitsrapport.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('arbeitsrapport_show', { 'id': arbeitsrapport.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('arbeitsrapport_edit', { 'id': arbeitsrapport.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('arbeitsrapport_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

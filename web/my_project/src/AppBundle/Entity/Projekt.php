@@ -12,33 +12,37 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projekt
 {
-	 /**
-	 * @ORM\OneToMany(targetEntity="Stundeneintrag", mappedBy="stundeneintrag")
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
-	private $studneneintraege;
+	private $id;
 	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="projektname", type="string", length=255)
+	 */
+	private $projektname;
+
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Kundenliste", inversedBy="kunden")
 	 */
-	private $kundenliste;
-		
-	
+	private $kundenliste;  
+    
+    
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="Arbeitsrapport", type="integer", nullable=true)
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="projektname", type="string", length=255)
-     */
-    private $projektname;
+    private $arbeitsrapport;
+    
+    
 
 
     /**
@@ -98,45 +102,32 @@ class Projekt
     {
         return $this->kundenliste;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->studneneintraege = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
+   
+
+ 
 
     /**
-     * Add studneneintraege
+     * Set arbeitsrapport
      *
-     * @param \AppBundle\Entity\Stundeneintrag $studneneintraege
+     * @param integer $arbeitsrapport
      *
      * @return Projekt
      */
-    public function addStudneneintraege(\AppBundle\Entity\Stundeneintrag $studneneintraege)
+    public function setArbeitsrapport($arbeitsrapport)
     {
-        $this->studneneintraege[] = $studneneintraege;
+        $this->arbeitsrapport = $arbeitsrapport;
 
         return $this;
     }
 
     /**
-     * Remove studneneintraege
+     * Get arbeitsrapport
      *
-     * @param \AppBundle\Entity\Stundeneintrag $studneneintraege
+     * @return integer
      */
-    public function removeStudneneintraege(\AppBundle\Entity\Stundeneintrag $studneneintraege)
+    public function getArbeitsrapport()
     {
-        $this->studneneintraege->removeElement($studneneintraege);
-    }
-
-    /**
-     * Get studneneintraege
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStudneneintraege()
-    {
-        return $this->studneneintraege;
+        return $this->arbeitsrapport;
     }
 }

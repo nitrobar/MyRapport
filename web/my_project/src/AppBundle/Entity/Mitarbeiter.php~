@@ -35,12 +35,6 @@ class Mitarbeiter
     private $name;
     
   
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="passwort", type="string", length=255)
-     */
-    private $passwort;
 
     /**
      * @var int
@@ -161,4 +155,6 @@ class Mitarbeiter
     {
         return $this->mitarbeiterliste;
     }
+
+
 }

@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Projekt;
 use AppBundle\Form\ProjektType;
+use AppBundle\Entity\Kundenliste;
+use AppBundle\Entity\Arbeitsrapport;
 
 /**
  * Projekt controller.
@@ -45,13 +47,33 @@ class ProjektController extends Controller
         $projekt = new Projekt();
         $form = $this->createForm('AppBundle\Form\ProjektType', $projekt);
         $form->handleRequest($request);
+             
+        //-------------------Daten auslesen und Arbeitsrapport Objekt erstellen-----------
+	 	$projektname = $form->get('projektname')->getData();
+	 	$arbeitsrapport = new Arbeitsrapport(); 
+        $kundenname = new Kundenliste();
+        $kundenname = $form->get('kundenliste')->getData();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            //---------------------Verlinkung auf Arbeitsrapport über ID------------------
             $em->persist($projekt);
+            $arbeitsrapportId = $projekt->getId();
+            $projekt->setArbeitsrapport($arbeitsrapportId+100000);
+            $em->persist($projekt);
+            
+            //---------automatisch neuen Arbeitsrapport eröffnen mit eigener ID-----------
+            $arbeitsrapport->setKundenliste($kundenname);
+            $arbeitsrapport->setId($arbeitsrapportId+100000);
+            $arbeitsrapport->setName($projektname);
+            $em->persist($arbeitsrapport);
+  
+    
             $em->flush();
 
-            return $this->redirectToRoute('projekt_show', array('id' => $projekt->getId()));
+            return $this->redirectToRoute('projekt_index', array('id' => $projekt->getId()));
         }
 
         return $this->render('projekt/new.html.twig', array(

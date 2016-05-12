@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th>Nr.</th>
+                <th>Arbeitsrapport</th>
                 <th>Kunde</th>
                 <th>Projektname</th>
                 <th>Actions</th>
@@ -21,6 +22,11 @@
         {% for projekt in projekts %}
             <tr>
                 <td><a href="{{ path('projekt_show', { 'id': projekt.id }) }}">{{ projekt.id }}</a></td>
+                
+{#                 -------------------------------------neu-------------------------------------------------------------------#}
+                <td><a href="{{ path('arbeitsrapport_show', { 'id': projekt.arbeitsrapport }) }}">Rapport ansehen</a></td>
+{#                 -------------------------------------neu-------------------------------------------------------------------#}
+                
                 <td>{{ projekt.kundenliste.name }}</td>
                 <td>{{ projekt.projektname }}</td>
                 <td>
