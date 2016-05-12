@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %} {% block body %}
+
+<h1>
+	<u>Arbeitsrapport Nr. {{ arbeitsrapport.id }}</u>
+</h1>
+</br>
+
+<table class="table">
+	<tbody >	
+			<tr>
+			<td><b>Kunde:</b></td>
+			<td><b>Ausführender:</b></td>
+			</tr>
+			
+			<tr>
+			<td>{{ arbeitsrapport.kundenliste.name }}</td>
+			<td>Muster AG</td>
+			</tr>
+			
+			<tr>
+			<td>{{ arbeitsrapport.kundenliste.adresse }}</td>
+			<td>Quaderstrasse 15</td>
+			</tr>
+			
+			<tr>
+			<td>{{ arbeitsrapport.kundenliste.ort }}</td>
+			<td>7000 Chur</td>
+			</tr>
+			
+			<tr>
+			<td>{{ arbeitsrapport.kundenliste.telefon }}</td>
+			<td>081 322 22 33</td>
+			</tr>		
+	</tbody>
+</table>
+
+<p><b>Projektname: {{ arbeitsrapport.name }}</b></p>
+
+{# ------------------------------------------neu--------------------------------------------------------------------------------#}
+<table class="table">
+	     <tbody>
+	     <tr>
+			<td><b>Datum</b></td>
+			<td><b>Mitarbeiter</b></td>
+			<td><b>Leistung</b></td>
+			<td><b>Std</b></td>		
+			<td><b>Betrag / Std</b></td>
+			<td><b>Total</b></td>
+			<td><b>Actions</b></td>
+			</tr>
+	     
+	     
+        {% for stundeneintrag in stundeneintrags%}
+        
+            <tr>
+{#              <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>#}
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
+                <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
+                <td>{{ stundeneintrag.leistung }}</td>
+                <td>{{ stundeneintrag.std }}</td>
+                <td>{{ stundeneintrag.beitragProStd }}</td>
+                <td>{{ stundeneintrag.total }}</td>
+                <td>
+                
+                
+                 <li class="list-inline">
+                            
+                        <div class="btn-group" role="group" aria-label="...">
+  <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}" class="btn btn-primary">Ändern</a>
+     
+</div>
+                      
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{# ------------------------------------------neu--------------------------------------------------------------------------------#}
+
+<ul>
+{# ------------------------------------------neu--------------------------------------------------------------------------------#}
+	<a href="{{ path('stundeneintrag_new', { 'id': arbeitsrapport.id }) }}">Stundeneintrag hinzufüen</a>
+{# ------------------------------------------neu--------------------------------------------------------------------------------#}	
+	
+	<li><a href="{{ path('projekt_index') }}">Back to the list</a></li>
+	<li><a
+		href="{{ path('arbeitsrapport_edit', { 'id': arbeitsrapport.id }) }}">Edit</a>
+	</li>
+	<li>{{ form_start(delete_form) }} <input type="submit" value="Delete">
+		{{ form_end(delete_form) }}
+	</li>
+</ul>
+{% endblock %}

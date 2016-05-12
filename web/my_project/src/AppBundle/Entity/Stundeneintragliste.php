@@ -5,14 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Stundeneintrag
+ * Stundeneintragliste
  *
- * @ORM\Table(name="stundeneintrag")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\StundeneintragRepository")
+ * @ORM\Table(name="stundeneintragliste")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StundeneintraglisteRepository")
  */
-class Stundeneintrag
+class Stundeneintragliste
 {
-	
     /**
      * @var int
      *
@@ -24,17 +23,9 @@ class Stundeneintrag
     
     
     /**
-     * @ORM\ManyToOne(targetEntity="Mitarbeiterliste", inversedBy="mitarbeiter")
+     * @ORM\OneToMany(targetEntity="Stundeneintrag", mappedBy="stundeneintragliste")
      */
-    private $mitarbeiterliste;
-    
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Stundeneintragliste", inversedBy="stundeneintrag")
-     */
-    private $stundeneintragliste;
-    
-    
+    private $stundeneintrag;
     
     
 
@@ -53,18 +44,18 @@ class Stundeneintrag
     private $leistung;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="std", type="float")
+     * @ORM\Column(name="std", type="string", length=255)
      */
     private $std;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="beitragProStd", type="integer")
+     * @ORM\Column(name="betragProStd", type="integer")
      */
-    private $beitragProStd;
+    private $betragProStd;
 
     /**
      * @var int
@@ -73,11 +64,10 @@ class Stundeneintrag
      */
     private $total;
     
-    
     /**
      * @var int
      *
-     * @ORM\Column(name="arbeitsrapportId", type="integer")
+     * @ORM\Column(name="arbeitsrapportId", type="integer", nullable=true)
      */
     private $arbeitsrapportId;
 
@@ -97,7 +87,7 @@ class Stundeneintrag
      *
      * @param \DateTime $datum
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
     public function setDatum($datum)
     {
@@ -121,7 +111,7 @@ class Stundeneintrag
      *
      * @param string $leistung
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
     public function setLeistung($leistung)
     {
@@ -143,9 +133,9 @@ class Stundeneintrag
     /**
      * Set std
      *
-     * @param float $std
+     * @param string $std
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
     public function setStd($std)
     {
@@ -157,7 +147,7 @@ class Stundeneintrag
     /**
      * Get std
      *
-     * @return float
+     * @return string
      */
     public function getStd()
     {
@@ -165,27 +155,27 @@ class Stundeneintrag
     }
 
     /**
-     * Set beitragProStd
+     * Set betragProStd
      *
-     * @param integer $beitragProStd
+     * @param integer $betragProStd
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
-    public function setBeitragProStd($beitragProStd)
+    public function setBetragProStd($betragProStd)
     {
-        $this->beitragProStd = $beitragProStd;
+        $this->betragProStd = $betragProStd;
 
         return $this;
     }
 
     /**
-     * Get beitragProStd
+     * Get betragProStd
      *
      * @return int
      */
-    public function getBeitragProStd()
+    public function getBetragProStd()
     {
-        return $this->beitragProStd;
+        return $this->betragProStd;
     }
 
     /**
@@ -193,13 +183,13 @@ class Stundeneintrag
      *
      * @param integer $total
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
-   
- 	public function setTotal($total)
+    public function setTotal($total)
     {
         $this->total = $total;
-        return $this;   
+
+        return $this;
     }
 
     /**
@@ -211,55 +201,46 @@ class Stundeneintrag
     {
         return $this->total;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stundeneintrag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set mitarbeiterliste
+     * Add stundeneintrag
      *
-     * @param \AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste
+     * @param \AppBundle\Entity\Stundeneintrag $stundeneintrag
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
-    public function setMitarbeiterliste(\AppBundle\Entity\Mitarbeiterliste $mitarbeiterliste = null)
+    public function addStundeneintrag(\AppBundle\Entity\Stundeneintrag $stundeneintrag)
     {
-        $this->mitarbeiterliste = $mitarbeiterliste;
+        $this->stundeneintrag[] = $stundeneintrag;
 
         return $this;
     }
 
     /**
-     * Get mitarbeiterliste
+     * Remove stundeneintrag
      *
-     * @return \AppBundle\Entity\Mitarbeiterliste
+     * @param \AppBundle\Entity\Stundeneintrag $stundeneintrag
      */
-    public function getMitarbeiterliste()
+    public function removeStundeneintrag(\AppBundle\Entity\Stundeneintrag $stundeneintrag)
     {
-        return $this->mitarbeiterliste;
-    }
-
-    
-
-    /**
-     * Set stundeneintragliste
-     *
-     * @param \AppBundle\Entity\Stundeneintragliste $stundeneintragliste
-     *
-     * @return Stundeneintrag
-     */
-    public function setStundeneintragliste(\AppBundle\Entity\Stundeneintragliste $stundeneintragliste = null)
-    {
-        $this->stundeneintragliste = $stundeneintragliste;
-
-        return $this;
+        $this->stundeneintrag->removeElement($stundeneintrag);
     }
 
     /**
-     * Get stundeneintragliste
+     * Get stundeneintrag
      *
-     * @return \AppBundle\Entity\Stundeneintragliste
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getStundeneintragliste()
+    public function getStundeneintrag()
     {
-        return $this->stundeneintragliste;
+        return $this->stundeneintrag;
     }
 
     /**
@@ -267,7 +248,7 @@ class Stundeneintrag
      *
      * @param integer $arbeitsrapportId
      *
-     * @return Stundeneintrag
+     * @return Stundeneintragliste
      */
     public function setArbeitsrapportId($arbeitsrapportId)
     {

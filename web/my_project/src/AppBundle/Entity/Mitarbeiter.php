@@ -35,12 +35,6 @@ class Mitarbeiter
     private $name;
     
   
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="passwort", type="string", length=255)
-     */
-    private $passwort;
 
     /**
      * @var int
@@ -162,27 +156,5 @@ class Mitarbeiter
         return $this->mitarbeiterliste;
     }
 
-    /**
-     * Set passwort
-     *
-     * @param string $passwort
-     *
-     * @return Mitarbeiter
-     */
-    public function setPasswort($passwort)
-    {
-        $this->passwort = $passwort;
 
-        return $this;
-    }
-
-    /**
-     * Get passwort
-     *
-     * @return string
-     */
-    public function getPasswort()
-    {
-        return $this->passwort;
-    }
 }
