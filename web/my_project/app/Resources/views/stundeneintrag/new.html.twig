@@ -9,8 +9,7 @@
     {{ form_end(form) }}
 
   <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('stundeneintrag_index') }}">Zurück</a>
-        </li>
-
-   
+            <a class="btn btn-info" href="{{ path('arbeitsrapport_show', { 'id': id }) }}">Zurück</a>
+  </li>
+  
 {% endblock %}
