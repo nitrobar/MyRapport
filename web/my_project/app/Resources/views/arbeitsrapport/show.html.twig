@@ -1,34 +1,32 @@
 {% extends 'base.html.twig' %} {% block body %}
 
-<h1>
+<h1 style="padding-bottom: 10px">
 	<u>Arbeitsrapport Nr. {{ arbeitsrapport.id }}</u>
 </h1>
-</br>
-
-<table class="table">
-	<tbody >	
+<table class='table borderless'>
+	<tbody>	
 			<tr>
-			<td><b>Kunde:</b></td>
+			<td width="80%"><b>Kunde:</b></td>
 			<td><b>Ausführender:</b></td>
 			</tr>
-			
+			<tr><td> </td></tr>
 			<tr>
-			<td>{{ arbeitsrapport.kundenliste.name }}</td>
+			<td width="80%">{{ arbeitsrapport.kundenliste.name }}</td>
 			<td>Muster AG</td>
 			</tr>
 			
 			<tr>
-			<td>{{ arbeitsrapport.kundenliste.adresse }}</td>
+			<td width="80%">{{ arbeitsrapport.kundenliste.adresse }}</td>
 			<td>Quaderstrasse 15</td>
 			</tr>
 			
 			<tr>
-			<td>{{ arbeitsrapport.kundenliste.ort }}</td>
+			<td width="80%">{{ arbeitsrapport.kundenliste.ort }}</td>
 			<td>7000 Chur</td>
 			</tr>
 			
 			<tr>
-			<td>{{ arbeitsrapport.kundenliste.telefon }}</td>
+			<td width="80%">{{ arbeitsrapport.kundenliste.telefon }}</td>
 			<td>081 322 22 33</td>
 			</tr>		
 	</tbody>
@@ -37,7 +35,7 @@
 <p><b>Projektname: {{ arbeitsrapport.name }}</b></p>
 
 {# ------------------------------------------neu--------------------------------------------------------------------------------#}
-<table class="table">
+<table class="table table-bordered">
 	     <tbody>
 	     <tr>
 			<td><b>Datum</b></td>
@@ -46,7 +44,7 @@
 			<td><b>Std</b></td>		
 			<td><b>Betrag / Std</b></td>
 			<td><b>Total</b></td>
-			<td><b>Actions</b></td>
+			<td><b></b></td>
 			</tr>
 	     
 	     
@@ -75,19 +73,13 @@
         {% endfor %}
         </tbody>
 </table>
-{# ------------------------------------------neu--------------------------------------------------------------------------------#}
 
-<ul>
-{# ------------------------------------------neu--------------------------------------------------------------------------------#}
-	<a href="{{ path('stundeneintrag_new', { 'id': arbeitsrapport.id }) }}">Stundeneintrag hinzufüen</a>
-{# ------------------------------------------neu--------------------------------------------------------------------------------#}	
-	
-	<li><a href="{{ path('projekt_index') }}">Back to the list</a></li>
-	<li><a
-		href="{{ path('arbeitsrapport_edit', { 'id': arbeitsrapport.id }) }}">Edit</a>
-	</li>
-	<li>{{ form_start(delete_form) }} <input type="submit" value="Delete">
-		{{ form_end(delete_form) }}
-	</li>
-</ul>
+
+  <a style="font-size:20px; padding-top:1px; margin-left: 97%"   class="btn btn-success" href="{{ path('stundeneintrag_new', { 'id': arbeitsrapport.id }) }}">+</a>
+
+</br>
+
+  <a class="btn btn-info" href="{{ path('projekt_index') }}">Back to the list</a></li>
+
+  
 {% endblock %}

@@ -10,19 +10,18 @@
         
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
      	<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
-        
+     	
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         
         {% block javascripts %}{% endblock %}
         
         {% stylesheets
      output='assets/fonts/glyphicons-halflings-regular.ttf'
-    'bundles/bootstrap/fonts/glyphicons-halflings-regular.ttf'
-%}{% endstylesheets %}
+    'bundles/bootstrap/fonts/glyphicons-halflings-regular.ttf'%}{% endstylesheets %}
         
     </head>
     <body class="jumbotron">
-
+	     
     
     <nav class="navbar navbar-default navbar-fixed-top ">
   <div class="container-fluid">
@@ -38,7 +37,7 @@
          <span class = "icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="/"><img alt="Logo" src="MyRapport_Icon.png" height="50" width="50"></a> 
+      <a class="navbar-brand" href="/"><img alt="Logo" src="/MyRapport_Icon.png" height="50" width="50"></a> 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,15 +50,8 @@
 		<li id="material"> <a href="{{ path('material_index') }}">Material</a> </li>
         <li id="kunde"> <a href="{{ path('kunde_index') }}">Kunden</a> </li>
 
-        
-
-        
-
-       
-
       </ul>
    
-
       <ul class="nav navbar-nav navbar-right">
       <li> <a href="{{ path('logout') }}">Logout <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a> </li>
 
@@ -71,15 +63,14 @@
 </nav>
 <br>
 
-    
+     {% block body %} {% endblock %}   
      <script src="{{ asset('js/jquery.js') }}"></script>
      <script src="{{ asset('js/bootstrap.js') }}"></script>
      
      
     <footer class="panel-footer navbar-fixed-bottom ">
-    <p  class="footer"> &copy; MyRapport Design</p>
+    <p  class="footer"> &copy; MyRapport</p>
     </footer>
-           {% block body %} {% endblock %}   
            
     </body>
     

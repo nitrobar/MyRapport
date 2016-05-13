@@ -45,7 +45,7 @@ a:hover {
   outline: 0;
 }
 h1 {
-  font-size: 2em;
+  font-size: 14px;
   margin: 0.67em 0;
 }
 abbr[title] {
@@ -374,7 +374,7 @@ h6 .small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
+  margin-top: 0px;
   margin-bottom: 10px;
 }
 h1 small,
@@ -1409,7 +1409,7 @@ th {
   padding: 5px;
 }
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 3px solid black;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -1417,7 +1417,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ddd;
+  border: 3px solid black;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -4352,7 +4352,7 @@ a.list-group-item.active > .badge,
 }
 .jumbotron {
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.14285714;
@@ -4384,7 +4384,8 @@ a.list-group-item.active > .badge,
   }
   .jumbotron h1,
   .jumbotron .h1 {
-    font-size: 63px;
+    font-size: 40px;
+	font-weight: bold;
   }
 }
 .thumbnail {
@@ -6309,3 +6310,13 @@ form .alert ul {
   list-style: none;
   padding-left: 0;
 }
+
+
+.borderless td {
+    border: none !important;
+    padding:2px !important;
+    font-size: 20px !important;   
+}
+
+
+
