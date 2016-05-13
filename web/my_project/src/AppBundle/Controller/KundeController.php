@@ -28,10 +28,20 @@ class KundeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $kundes = $em->getRepository('AppBundle:Kunde')->findAll();
+       
+       foreach ($kundes as $kunde) {
+       $deleteForm = $this->createDeleteForm($kunde);
+       }
+        
 
         return $this->render('kunde/index.html.twig', array(
             'kundes' => $kundes,
+        	'delete_form' => $deleteForm->createView(),
         ));
+                
+        
+        
+        
     }
 
     /**
@@ -98,6 +108,8 @@ class KundeController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+    
 
     /**
      * Displays a form to edit an existing Kunde entity.
@@ -161,4 +173,6 @@ class KundeController extends Controller
             ->getForm()
         ;
     }
+    
+   
 }
