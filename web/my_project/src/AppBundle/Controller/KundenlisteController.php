@@ -27,10 +27,20 @@ class KundenlisteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $kundenlistes = $em->getRepository('AppBundle:Kundenliste')->findAll();
+        
+        foreach ($kundenlistes as $kundeliste) {
+        	$deleteForm = $this->createDeleteForm($kundeliste);
+        }
 
         return $this->render('kundenliste/index.html.twig', array(
             'kundenlistes' => $kundenlistes,
+        		'delete_form' => $deleteForm->createView(),
         ));
+        
+
+        
+        
+    
     }
 
     /**
