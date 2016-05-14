@@ -10,9 +10,7 @@ use AppBundle\Entity\Material;
 use AppBundle\Form\MaterialType;
 use AppBundle\Entity\Materialliste;
 
-use AppBundle\Entity\Kunde;
-use AppBundle\Form\KundeType;
-use AppBundle\Entity\Kundenliste;
+
 /**
  * Material controller.
  *

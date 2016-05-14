@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Materialeintrag;
 use AppBundle\Form\MaterialeintragType;
+use AppBundle\Entity\Materialeintragliste;
 
 /**
  * Materialeintrag controller.
@@ -16,6 +17,7 @@ use AppBundle\Form\MaterialeintragType;
  */
 class MaterialeintragController extends Controller
 {
+	
     /**
      * Lists all Materialeintrag entities.
      *
@@ -36,13 +38,15 @@ class MaterialeintragController extends Controller
     /**
      * Creates a new Materialeintrag entity.
      *
-     * @Route("/new", name="materialeintrag_new")
+     * @Route("/new/{id}", name="materialeintrag_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $id)
     {
         $materialeintrag = new Materialeintrag();
-        $form = $this->createForm('AppBundle\Form\MaterialeintragType', $materialeintrag);
+        $materialeintragliste = new Materialeintragliste();
+        
+        $form = $this->createForm('AppBundle\Form\MaterialeintragType', $materialeintrag, array('id'=>$id));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,15 +67,25 @@ class MaterialeintragController extends Controller
             $materialeintrag->setTotal($total);
             //--------------------total berechen----------------------------------------------
             
+            
+            $materialeintragliste->setAnzahl($anzahl);
+            $materialeintragliste->setTotal($total);
+            $materialeintragliste->setBetragProAnzahl($material->getPreis());
+            $materialeintragliste->setArbeitsrapportId($id);
+            $materialeintrag->setMaterialeintragliste($materialeintragliste);
+            
+            
             $em->persist($materialeintrag);
+            $em->persist($materialeintragliste);
             $em->flush();
 
-            return $this->redirectToRoute('materialeintrag_show', array('id' => $materialeintrag->getId()));
+            return $this->redirectToRoute('arbeitsrapport_show', array('id' => $id));
         }
 
         return $this->render('materialeintrag/new.html.twig', array(
             'materialeintrag' => $materialeintrag,
             'form' => $form->createView(),
+        	'id'=>$id,
         ));
     }
 
@@ -100,12 +114,38 @@ class MaterialeintragController extends Controller
     public function editAction(Request $request, Materialeintrag $materialeintrag)
     {
         $deleteForm = $this->createDeleteForm($materialeintrag);
-        $editForm = $this->createForm('AppBundle\Form\MaterialeintragType', $materialeintrag);
+        $editForm = $this->createForm('AppBundle\Form\MaterialeintragType', $materialeintrag, array('id'=>$materialeintrag->getArbeitsrapportId()));
         $editForm->handleRequest($request);
 
+        $material_auswahl = $editForm->get('materialliste')->getData();
+        $name = $material_auswahl->getName();
+        
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $material_auswahl = $editForm->get('materialliste')->getData();
+            $name = $material_auswahl->getName();
+            
+            
+            $material = $em->getRepository('AppBundle:Material')->findOneBy(array('typ' => $name));
+            $materialeintrag->setBetragProAnzahl($material->getPreis());
+            //--------------------Daten von Material auslesen----------------------------------------
+            
+            //--------------------total berechen----------------------------------------------
+            $anzahl = $editForm->get('anzahl')->getData();
+            $total = $anzahl*$material->getPreis();
+            $materialeintrag->setTotal($total);
+            //--------------------total berechen----------------------------------------------
+            
+            $materialeintragliste = new Materialeintragliste();
+            $materialeintragliste->setAnzahl($anzahl);
+            $materialeintragliste->setTotal($total);
+            $materialeintragliste->setBetragProAnzahl($material->getPreis());
+            $materialeintrag->setMaterialeintragliste($materialeintragliste);
+            
+            
             $em->persist($materialeintrag);
+            $em->persist($materialeintragliste);
             $em->flush();
 
             return $this->redirectToRoute('materialeintrag_edit', array('id' => $materialeintrag->getId()));
@@ -115,6 +155,7 @@ class MaterialeintragController extends Controller
             'materialeintrag' => $materialeintrag,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+        	'id'=> $materialeintrag->getArbeitsrapportId(),
         ));
     }
 
@@ -134,8 +175,7 @@ class MaterialeintragController extends Controller
             $em->remove($materialeintrag);
             $em->flush();
         }
-
-        return $this->redirectToRoute('materialeintrag_index');
+        return $this->redirectToRoute('arbeitsrapport_show', array('id' => $materialeintrag->getArbeitsrapportId()));
     }
 
     /**

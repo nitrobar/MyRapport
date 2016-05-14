@@ -34,7 +34,7 @@
 
 <p><b>Projektname: {{ arbeitsrapport.name }}</b></p>
 
-{# ------------------------------------------neu--------------------------------------------------------------------------------#}
+{# --------------------Stundeneinträge-------------------------------------------------------#}
 <table class="table table-bordered" style = "border: none !important;">
 	     <tbody>
 	     <tr style="background-color: lightgrey;">
@@ -52,7 +52,7 @@
         
             <tr>
 {#              <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>#}
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d.m.Y') }}{% endif %}</td>
                 <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
                 <td>{{ stundeneintrag.std }}</td>
@@ -74,11 +74,42 @@
 </table>
 
 
-  
+{# --------------------Materialeinträge-------------------------------------------------------#}
+<table class="table table-bordered" style = "border: none !important;">
+	     <tbody>
+	     <tr style="background-color: lightgrey;">
+			<td><b>Anzahl</b></td>
+			<td><b>Material</b></td>
+			<td><b>Betrag / Stk</b></td>
+			<td><b>Total</b></td>		
+			<td><b></b></td>
+			</tr>
+	     
+	     
+        {% for materialeintrag in materialeintrags%}
+        
+            <tr>            
+                <td>{{ materialeintrag.anzahl }}</td>  
+                <td>{{ materialeintrag.materialliste.name}}</td>
+                <td>{{ materialeintrag.betragProAnzahl }}</td>
+                <td>{{ materialeintrag.total }}</td>
+                <td><a style="float:right" href="{{ path('materialeintrag_edit', { 'id': materialeintrag.id }) }}" class="btn btn-primary">Ändern</a></td>
+            </tr>
+        {% endfor %}
+       		 <tr style = "border: none !important;">
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>		
+				<td style = "border: none !important;"><a style="font-size:20px; padding-top:1px; float:right"   class="btn btn-success" href="{{ path('materialeintrag_new', { 'id': arbeitsrapport.id }) }}">+</a></td>
+			</tr>
+        </tbody>
+</table>
 
-</br>
 
-  <a class="btn btn-info" href="{{ path('projekt_index') }}">Back to the list</a></li>
+
+
+  <a class="btn btn-info" href="{{ path('projekt_index') }}"><- Projektübersicht</a></li>
 
   
 {% endblock %}

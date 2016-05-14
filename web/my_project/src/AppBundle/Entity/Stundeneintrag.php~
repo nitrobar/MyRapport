@@ -34,9 +34,6 @@ class Stundeneintrag
      */
     private $stundeneintragliste;
     
-    
-    
-    
 
     /**
      * @var \DateTime
@@ -260,5 +257,29 @@ class Stundeneintrag
     public function getStundeneintragliste()
     {
         return $this->stundeneintragliste;
+    }
+
+    /**
+     * Set arbeitsrapportId
+     *
+     * @param integer $arbeitsrapportId
+     *
+     * @return Stundeneintrag
+     */
+    public function setArbeitsrapportId($arbeitsrapportId)
+    {
+        $this->arbeitsrapportId = $arbeitsrapportId;
+
+        return $this;
+    }
+
+    /**
+     * Get arbeitsrapportId
+     *
+     * @return integer
+     */
+    public function getArbeitsrapportId()
+    {
+        return $this->arbeitsrapportId;
     }
 }

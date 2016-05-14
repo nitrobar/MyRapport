@@ -34,9 +34,6 @@ class Stundeneintrag
      */
     private $stundeneintragliste;
     
-    
-    
-    
 
     /**
      * @var \DateTime

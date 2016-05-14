@@ -18,6 +18,12 @@ class Materialeintrag
 	 */
 	private $materialliste;
 	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Materialeintragliste", inversedBy="materialeintrag")
+	 */
+	private $materialeintragliste;
+	
+	
     /**
      * @var int
      *
@@ -48,6 +54,14 @@ class Materialeintrag
      */
     private $total;
 
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="arbeitsrapportId", type="integer")
+     */
+    private $arbeitsrapportId;
+    
 
     /**
      * Get id
@@ -153,5 +167,53 @@ class Materialeintrag
     public function getMaterialliste()
     {
         return $this->materialliste;
+    }
+
+    /**
+     * Set materialeintragliste
+     *
+     * @param \AppBundle\Entity\Materialeintragliste $materialeintragliste
+     *
+     * @return Materialeintrag
+     */
+    public function setMaterialeintragliste(\AppBundle\Entity\Materialeintragliste $materialeintragliste = null)
+    {
+        $this->materialeintragliste = $materialeintragliste;
+
+        return $this;
+    }
+
+    /**
+     * Get materialeintragliste
+     *
+     * @return \AppBundle\Entity\Materialeintragliste
+     */
+    public function getMaterialeintragliste()
+    {
+        return $this->materialeintragliste;
+    }
+
+    /**
+     * Set arbeitsrapportId
+     *
+     * @param integer $arbeitsrapportId
+     *
+     * @return Materialeintrag
+     */
+    public function setArbeitsrapportId($arbeitsrapportId)
+    {
+        $this->arbeitsrapportId = $arbeitsrapportId;
+
+        return $this;
+    }
+
+    /**
+     * Get arbeitsrapportId
+     *
+     * @return integer
+     */
+    public function getArbeitsrapportId()
+    {
+        return $this->arbeitsrapportId;
     }
 }

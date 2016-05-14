@@ -11,16 +11,13 @@ use AppBundle\Form\StundeneintragType;
 use AppBundle\Entity\Mitarbeiterliste;
 use AppBundle\Entity\Stundeneintragliste;
 
-
 /**
  * Stundeneintrag controller.
  *
  * @Route("/stundeneintrag")
  */
 class StundeneintragController extends Controller
-{
-	var $myid;
-	
+{	
 	
     /**
      * Lists all Stundeneintrag entities.
@@ -104,8 +101,6 @@ class StundeneintragController extends Controller
             
             $em->persist($stundeneintrag);
             $em->persist($stundeneintragliste);
-                  
-
             $em->flush();
 
             return $this->redirectToRoute('arbeitsrapport_show', array('id' => $id));
@@ -195,9 +190,7 @@ class StundeneintragController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($stundeneintrag);
             $em->flush();
-        }
-
-        //return $this->redirectToRoute('kunden_index');
+        } 
         return $this->redirectToRoute('arbeitsrapport_show', array('id' => $stundeneintrag->getArbeitsrapportId()));
     }
 

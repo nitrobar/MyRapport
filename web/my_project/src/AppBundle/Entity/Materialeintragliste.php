@@ -5,25 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Materialeintrag
+ * Materialeintragliste
  *
- * @ORM\Table(name="materialeintrag")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MaterialeintragRepository")
+ * @ORM\Table(name="materialeintragliste")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MaterialeintraglisteRepository")
  */
-class Materialeintrag
+class Materialeintragliste
 {
-	
-	/**
-	 * @ORM\ManyToOne(targetEntity="Materialliste", inversedBy="materialien")
-	 */
-	private $materialliste;
-	
-	/**
-	 * @ORM\ManyToOne(targetEntity="Materialeintragliste", inversedBy="materialeintrag")
-	 */
-	private $materialeintragliste;
-	
-	
     /**
      * @var int
      *
@@ -32,6 +20,13 @@ class Materialeintrag
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Materialeintrag", mappedBy="materialeintragliste")
+     */
+    private $materialeintrag;
+    
 
     /**
      * @var int
@@ -53,15 +48,15 @@ class Materialeintrag
      * @ORM\Column(name="total", type="integer")
      */
     private $total;
-
     
     /**
      * @var int
      *
-     * @ORM\Column(name="arbeitsrapportId", type="integer")
+     * @ORM\Column(name="arbeitsrapportId", type="integer", nullable=true)
      */
     private $arbeitsrapportId;
     
+
 
     /**
      * Get id
@@ -78,7 +73,7 @@ class Materialeintrag
      *
      * @param integer $anzahl
      *
-     * @return Materialeintrag
+     * @return Materialeintragliste
      */
     public function setAnzahl($anzahl)
     {
@@ -102,7 +97,7 @@ class Materialeintrag
      *
      * @param integer $betragProAnzahl
      *
-     * @return Materialeintrag
+     * @return Materialeintragliste
      */
     public function setBetragProAnzahl($betragProAnzahl)
     {
@@ -126,7 +121,7 @@ class Materialeintrag
      *
      * @param integer $total
      *
-     * @return Materialeintrag
+     * @return Materialeintragliste
      */
     public function setTotal($total)
     {
@@ -144,52 +139,69 @@ class Materialeintrag
     {
         return $this->total;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->materialeintrag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set materialliste
+     * Add materialeintrag
      *
-     * @param \AppBundle\Entity\Materialliste $materialliste
+     * @param \AppBundle\Entity\Materialeintrag $materialeintrag
      *
-     * @return Materialeintrag
+     * @return Materialeintragliste
      */
-    public function setMaterialliste(\AppBundle\Entity\Materialliste $materialliste = null)
+    public function addMaterialeintrag(\AppBundle\Entity\Materialeintrag $materialeintrag)
     {
-        $this->materialliste = $materialliste;
+        $this->materialeintrag[] = $materialeintrag;
 
         return $this;
     }
 
     /**
-     * Get materialliste
+     * Remove materialeintrag
      *
-     * @return \AppBundle\Entity\Materialliste
+     * @param \AppBundle\Entity\Materialeintrag $materialeintrag
      */
-    public function getMaterialliste()
+    public function removeMaterialeintrag(\AppBundle\Entity\Materialeintrag $materialeintrag)
     {
-        return $this->materialliste;
+        $this->materialeintrag->removeElement($materialeintrag);
     }
 
     /**
-     * Set materialeintragliste
+     * Get materialeintrag
      *
-     * @param \AppBundle\Entity\Materialeintragliste $materialeintragliste
-     *
-     * @return Materialeintrag
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setMaterialeintragliste(\AppBundle\Entity\Materialeintragliste $materialeintragliste = null)
+    public function getMaterialeintrag()
     {
-        $this->materialeintragliste = $materialeintragliste;
+        return $this->materialeintrag;
+    }
+
+    /**
+     * Set arbeitsrapportId
+     *
+     * @param integer $arbeitsrapportId
+     *
+     * @return Materialeintragliste
+     */
+    public function setArbeitsrapportId($arbeitsrapportId)
+    {
+        $this->arbeitsrapportId = $arbeitsrapportId;
 
         return $this;
     }
 
     /**
-     * Get materialeintragliste
+     * Get arbeitsrapportId
      *
-     * @return \AppBundle\Entity\Materialeintragliste
+     * @return integer
      */
-    public function getMaterialeintragliste()
+    public function getArbeitsrapportId()
     {
-        return $this->materialeintragliste;
+        return $this->arbeitsrapportId;
     }
 }

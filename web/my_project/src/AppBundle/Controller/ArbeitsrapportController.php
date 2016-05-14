@@ -75,6 +75,9 @@ class ArbeitsrapportController extends Controller
     	//----------zeige nur Stundeneinträge zum Pojekt mit der dazugehörigen ArbeitsrapportId an--------------------------
     	$stundeneintrags = $em->getRepository('AppBundle:Stundeneintrag')->findBy(array('arbeitsrapportId' => array($arbeitsrapport)));
     	
+    	//----------zeige nur Materialeinträge zum Pojekt mit der dazugehörigen ArbeitsrapportId an--------------------------
+    	$materialeintrags = $em->getRepository('AppBundle:Materialeintrag')->findBy(array('arbeitsrapportId' => array($arbeitsrapport)));
+    	
 
     	
         $deleteForm = $this->createDeleteForm($arbeitsrapport);
@@ -83,7 +86,8 @@ class ArbeitsrapportController extends Controller
             'arbeitsrapport' => $arbeitsrapport,
         		
       //------------------------neu--------------------------------------------------------------
-        'stundeneintrags' => $stundeneintrags,
+        	'stundeneintrags' => $stundeneintrags,
+        	'materialeintrags' => $materialeintrags,
    
             'delete_form' => $deleteForm->createView(),
         ));
