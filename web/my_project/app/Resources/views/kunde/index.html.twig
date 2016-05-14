@@ -35,11 +35,8 @@
                         <div class="btn-group" role="group" aria-label="...">
   <a href="{{ path('kunde_show', { 'id': kunde.id }) }}" class="btn btn-info">Anzeigen</a>
   <a href="{{ path('kunde_edit', { 'id': kunde.id }) }}" class="btn btn-primary">Ändern</a>
-  <a class="list-inline">
-  {{ form_start(delete_form) }}
-  <input class="btn btn-danger" type="submit" value="Löschen">
-  {{ form_end(delete_form) }}
-  </a>
+  </div>
+
 
                         
                       </li>                                   
