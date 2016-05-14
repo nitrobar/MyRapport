@@ -74,7 +74,7 @@ class StundeneintragController extends Controller
             $mitarbeiter = $em->getRepository('AppBundle:Mitarbeiter')->findOneBy(array('id' => $mitarbeiterId));
             $stundeneintrag->setBeitragProStd($mitarbeiter->getStundenansatz());
 //--------------------Daten von Mitarbeiter auslesen----------------------------------------
-          
+            
 //--------------------total berechen----------------------------------------------
             $std = $form->get('std')->getData();
             $total = $std*$mitarbeiter->getStundenansatz();

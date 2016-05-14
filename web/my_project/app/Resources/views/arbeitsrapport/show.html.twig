@@ -35,9 +35,9 @@
 <p><b>Projektname: {{ arbeitsrapport.name }}</b></p>
 
 {# ------------------------------------------neu--------------------------------------------------------------------------------#}
-<table class="table table-bordered">
+<table class="table table-bordered" style = "border: none !important;">
 	     <tbody>
-	     <tr>
+	     <tr style="background-color: lightgrey;">
 			<td><b>Datum</b></td>
 			<td><b>Mitarbeiter</b></td>
 			<td><b>Leistung</b></td>
@@ -58,24 +58,23 @@
                 <td>{{ stundeneintrag.std }}</td>
                 <td>{{ stundeneintrag.beitragProStd }}</td>
                 <td>{{ stundeneintrag.total }}</td>
-                <td>
-                
-                
-                 <li class="list-inline">
-                            
-                        <div class="btn-group" role="group" aria-label="...">
-  <a href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}" class="btn btn-primary">Ändern</a>
-     
-</div>
-                      
-                </td>
+                <td><a style="float:right" href="{{ path('stundeneintrag_edit', { 'id': stundeneintrag.id }) }}" class="btn btn-primary">Ändern</a></td>
             </tr>
         {% endfor %}
+       		 <tr style = "border: none !important;">
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>		
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"> </td>
+				<td style = "border: none !important;"><a style="font-size:20px; padding-top:1px; float:right"   class="btn btn-success" href="{{ path('stundeneintrag_new', { 'id': arbeitsrapport.id }) }}">+</a></td>
+			</tr>
         </tbody>
 </table>
 
 
-  <a style="font-size:20px; padding-top:1px; margin-left: 97%"   class="btn btn-success" href="{{ path('stundeneintrag_new', { 'id': arbeitsrapport.id }) }}">+</a>
+  
 
 </br>
 
