@@ -69,27 +69,54 @@ class ArbeitsrapportController extends Controller
      */
     public function showAction(Arbeitsrapport $arbeitsrapport)
     {
-    	//------------------------neu--------------------------------------------------------------
+    	
+    	
+    	
     	$em = $this->getDoctrine()->getManager();
+    	
+    	
+    	//------------------------Total Stunden und Total Kosten berechnen------------------------------------------
+    	$connection = $em->getConnection();
+    	
+    	$totalStunden = $connection->prepare("SELECT SUM(std)  FROM stundeneintrag where arbeitsrapportId = :id");
+    	$totalStunden->bindValue('id', $arbeitsrapport->getId());
+    	$totalStunden->execute();
+    	$resultsStunden = $totalStunden->fetchAll();
+    	
+    	$totalKosten = $connection->prepare("SELECT SUM(total)  FROM stundeneintrag where arbeitsrapportId = :id");
+    	$totalKosten->bindValue('id', $arbeitsrapport->getId());
+    	$totalKosten->execute();
+    	$resultsKosten = $totalKosten->fetchAll();
+    	
+    	$totalKostenMaterial = $connection->prepare("SELECT SUM(total)  FROM materialeintrag where arbeitsrapportId = :id");
+    	$totalKostenMaterial->bindValue('id', $arbeitsrapport->getId());
+    	$totalKostenMaterial->execute();
+    	$resultsKostenMaterial = $totalKostenMaterial->fetchAll();
+    	
+    	
+    	
+    	
     	
     	//----------zeige nur Stundeneinträge zum Pojekt mit der dazugehörigen ArbeitsrapportId an--------------------------
     	$stundeneintrags = $em->getRepository('AppBundle:Stundeneintrag')->findBy(array('arbeitsrapportId' => array($arbeitsrapport)));
     	
     	//----------zeige nur Materialeinträge zum Pojekt mit der dazugehörigen ArbeitsrapportId an--------------------------
     	$materialeintrags = $em->getRepository('AppBundle:Materialeintrag')->findBy(array('arbeitsrapportId' => array($arbeitsrapport)));
-    	
-
+	
     	
         $deleteForm = $this->createDeleteForm($arbeitsrapport);
 
         return $this->render('arbeitsrapport/show.html.twig', array(
             'arbeitsrapport' => $arbeitsrapport,
-        		
-      //------------------------neu--------------------------------------------------------------
+
         	'stundeneintrags' => $stundeneintrags,
         	'materialeintrags' => $materialeintrags,
-   
-            'delete_form' => $deleteForm->createView(),
+   			
+        	'resultsStunden' => $resultsStunden,
+        	'resultsKosten' => $resultsKosten,
+        	'resultsKostenMaterial' => $resultsKostenMaterial,
+        		
+        	'delete_form' => $deleteForm->createView(),
         ));
     }
 

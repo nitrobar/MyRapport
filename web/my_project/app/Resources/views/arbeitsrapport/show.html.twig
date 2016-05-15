@@ -45,13 +45,11 @@
 			<td><b>Betrag / Std</b></td>
 			<td><b>Total</b></td>
 			<td><b></b></td>
-			</tr>
-	     
+			</tr>     
 	     
         {% for stundeneintrag in stundeneintrags%}
         
             <tr>
-{#              <td><a href="{{ path('stundeneintrag_show', { 'id': stundeneintrag.id }) }}">{{ stundeneintrag.id }}</a></td>#}
                 <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d.m.Y') }}{% endif %}</td>
                 <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
@@ -72,6 +70,10 @@
 			</tr>
         </tbody>
 </table>
+Total Arbeitsstunden:  {% for resultStunden in resultsStunden%}    {{ resultStunden.sum }}      {% endfor %}
+<br>
+Total Kosten Arbeitsstunden:  {% for resultKosten in resultsKosten%}    {{ resultKosten.sum }}     {% endfor %}
+
 
 
 {# --------------------Materialeinträge-------------------------------------------------------#}
@@ -105,6 +107,8 @@
 			</tr>
         </tbody>
 </table>
+Total Materialkosten:  {% for resultKostenMaterial in resultsKostenMaterial%}    {{ resultKostenMaterial.sum }}     {% endfor %}
+<br>
 
 
 
