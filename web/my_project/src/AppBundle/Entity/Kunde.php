@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * Kunde
@@ -51,7 +53,7 @@ class Kunde
     /**
      * @var string
      *
-     * @ORM\Column(name="telefon", type="string", length=255)
+     * @ORM\Column(name="telefon", type="string", length=10)
      */
     private $telefon;
 

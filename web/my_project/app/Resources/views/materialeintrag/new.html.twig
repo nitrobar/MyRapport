@@ -5,12 +5,10 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" class ="btn btn-success" value="Neuer Eintrag" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('materialeintrag_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <li class="list-inline">
+            <a class="btn btn-info" href="{{ path('arbeitsrapport_show', { 'id': id }) }}">Zurück</a>
+ 	 </li>
 {% endblock %}
