@@ -23,12 +23,12 @@ class StundeneintragType extends AbstractType
     public function buildForm(FormBuilderInterface $builder,array $options)
     {
     	  	
-    	$this->arbeitsrapportId = $options['id'];	
+    	$this->arbeitsrapportId = $options['id'];
+        	
    	
         $builder
         	->add('arbeitsrapportId', HiddenType::class, array('data' => $this->arbeitsrapportId))
         	->add('datum', DateType::class, array('input'  => 'datetime','widget' => 'choice',))
-        	->add('mitarbeiterliste', EntityType::class, array('label' => 'Mitarbeiter', 'class' => 'AppBundle\Entity\Mitarbeiterliste', 'choice_label' => 'name', ))
             ->add('leistung')
             ->add('std', TextType::class, array('label' => 'Stunden',))        
           ;
@@ -41,7 +41,7 @@ class StundeneintragType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Stundeneintrag',
-        	'id' => null
+        	'id' => null,
         ));
     }
 }

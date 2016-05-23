@@ -173,6 +173,7 @@ class MaterialeintragController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($materialeintrag);
+            $em->remove($materialeintrag->getMaterialeintragliste());
             $em->flush();
         }
         return $this->redirectToRoute('arbeitsrapport_show', array('id' => $materialeintrag->getArbeitsrapportId()));

@@ -3,6 +3,7 @@
 <h1 style="padding-bottom: 10px">
 	<u>Arbeitsrapport Nr. {{ arbeitsrapport.id }}</u>
 </h1>
+<p><h3><b>Projektname: {{ arbeitsrapport.name }}</b></h3></p><br>
 <table class='table borderless'>
 	<tbody>	
 			<tr>
@@ -32,9 +33,10 @@
 	</tbody>
 </table>
 
-<p><b>Projektname: {{ arbeitsrapport.name }}</b></p>
+
 
 {# --------------------Stundeneinträge-------------------------------------------------------#}
+<div style="text-align:center"><h3><b>Stundeneinträge</b></h3></div>
 <table class="table table-bordered" style = "border: none !important;">
 	     <tbody>
 	     <tr style="background-color: lightgrey;">
@@ -42,15 +44,15 @@
 			<td><b>Mitarbeiter</b></td>
 			<td><b>Leistung</b></td>
 			<td><b>Std</b></td>		
-			<td><b>Betrag / Std</b></td>
-			<td><b>Total</b></td>
+			<td><b>Betrag / Std [CHF]</b></td>
+			<td><b>Total [CHF]</b></td>
 			<td><b></b></td>
 			</tr>     
 	     
         {% for stundeneintrag in stundeneintrags%}
         
             <tr>
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d.m.Y') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d/m/Y') }}{% endif %}</td>
                 <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
                 <td>{{ stundeneintrag.std }}</td>
@@ -70,20 +72,19 @@
 			</tr>
         </tbody>
 </table>
-Total Arbeitsstunden:  {% for resultStunden in resultsStunden%}    {{ resultStunden.sum }}      {% endfor %}
-<br>
-Total Kosten Arbeitsstunden:  {% for resultKosten in resultsKosten%}    {{ resultKosten.sum }}     {% endfor %}
+
 
 
 
 {# --------------------Materialeinträge-------------------------------------------------------#}
+<div style="text-align:center"><h3><b>Materialeinträge</b></h3></div>
 <table class="table table-bordered" style = "border: none !important;">
 	     <tbody>
 	     <tr style="background-color: lightgrey;">
 			<td><b>Anzahl</b></td>
 			<td><b>Material</b></td>
-			<td><b>Betrag / Stk</b></td>
-			<td><b>Total</b></td>		
+			<td><b>Stückpreis [CHF]</b></td>
+			<td><b>Total [CHF]</b></td>		
 			<td><b></b></td>
 			</tr>
 	     
@@ -107,13 +108,18 @@ Total Kosten Arbeitsstunden:  {% for resultKosten in resultsKosten%}    {{ resul
 			</tr>
         </tbody>
 </table>
-Total Materialkosten:  {% for resultKostenMaterial in resultsKostenMaterial%}    {{ resultKostenMaterial.sum }}     {% endfor %}
+
+<div style="text-align:center">
+Total Arbeitsstunden:  {% for resultStunden in resultsStunden%}    {{ resultStunden.sum }}      {% endfor %}
 <br>
+Total Kosten Arbeitsstunden in CHF: {% for resultKosten in resultsKosten%}    {{ resultKosten.sum }}     {% endfor %}
+<br>
+Total Materialkosten in CHF: {% for resultKostenMaterial in resultsKostenMaterial%}    {{ resultKostenMaterial.sum }}     {% endfor %}
+<br>
+</div>
 
 
-
-
-  <a class="btn btn-info" href="{{ path('projekt_index') }}"><- Projektübersicht</a></li>
+  <a class="btn btn-info" href="{{ path('projekt_index') }}"><- Projektübersicht</a>
 
   
 {% endblock %}

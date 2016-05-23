@@ -59,10 +59,11 @@ class MaterialController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($material);
             
-            //---------------------neu----------------------------------------------------
+           
             $em->persist($materialliste);
-            //---------------------neu----------------------------------------------------
-            
+        
+            $material->setMaterialliste($materialliste);
+            $em->persist($materialliste);
             $em->flush();
 
             return $this->redirectToRoute('material_show', array('id' => $material->getId()));
@@ -135,6 +136,7 @@ class MaterialController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($material);
+            $em->remove($material->getMaterialliste());
             $em->flush();
         }
 

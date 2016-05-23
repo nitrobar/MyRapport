@@ -64,13 +64,26 @@ class StundeneintragController extends Controller
             $em = $this->getDoctrine()->getManager();
             
 //--------------------Daten von Mitarbeiter auslesen-----------------------------------------
-            $mitarbeiter_auswahl = $form->get('mitarbeiterliste')->getData();
+
+            //-----------------------------check, ob if Mitarbeiter der Chef angemeldet--------------------------------
+            $mitarbeiterliste = new Mitarbeiterliste();
+            if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            	$mitarbeiterliste = $em->getRepository('AppBundle:Mitarbeiterliste')->findOneBy(array('id' => 2));
+            }
+            else{
+            	$mitarbeiterliste = $em->getRepository('AppBundle:Mitarbeiterliste')->findOneBy(array('id' => 1));
+            }
+            	$stundeneintrag->setMitarbeiterliste($mitarbeiterliste);
+           
+            
+           // $mitarbeiter_auswahl = $form->get('mitarbeiterliste')->getData();
+            $mitarbeiter_auswahl = $mitarbeiterliste;
             $mitarbeiterId = $mitarbeiter_auswahl->getId();
             
             
             $mitarbeiter = $em->getRepository('AppBundle:Mitarbeiter')->findOneBy(array('id' => $mitarbeiterId));
             $stundeneintrag->setBeitragProStd($mitarbeiter->getStundenansatz());
-//--------------------Daten von Mitarbeiter auslesen----------------------------------------
+
             
 //--------------------total berechen----------------------------------------------
             $std = $form->get('std')->getData();
@@ -102,6 +115,8 @@ class StundeneintragController extends Controller
             $em->persist($stundeneintrag);
             $em->persist($stundeneintragliste);
             $em->flush();
+            
+            
 
             return $this->redirectToRoute('arbeitsrapport_show', array('id' => $id));
         }
@@ -110,6 +125,7 @@ class StundeneintragController extends Controller
             'stundeneintrag' => $stundeneintrag,	
             'form' => $form->createView(),
         	'id'=>$id,
+        	
         ));
     }
 
@@ -139,10 +155,10 @@ class StundeneintragController extends Controller
     {
         $deleteForm = $this->createDeleteForm($stundeneintrag);
         $editForm = $this->createForm('AppBundle\Form\StundeneintragType', $stundeneintrag, array('id'=>$stundeneintrag->getArbeitsrapportId()));
-        $editForm->handleRequest($request);
-
-        $mitarbeiter_auswahl = $editForm->get('mitarbeiterliste')->getData();
-        $mitarbeiterId = $mitarbeiter_auswahl->getId();      
+        $editForm->handleRequest($request);   
+       
+        $mitarbeiterId = $stundeneintrag->getMitarbeiterliste()->getId();
+     
         
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -189,6 +205,7 @@ class StundeneintragController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($stundeneintrag);
+            $em->remove($stundeneintrag->getStundeneintragliste());
             $em->flush();
         } 
         return $this->redirectToRoute('arbeitsrapport_show', array('id' => $stundeneintrag->getArbeitsrapportId()));
