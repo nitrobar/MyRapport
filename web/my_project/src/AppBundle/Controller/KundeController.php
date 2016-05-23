@@ -80,6 +80,8 @@ class KundeController extends Controller
 //---------------------neu----------------------------------------------------
             $em->persist($kundenliste);
 //---------------------neu----------------------------------------------------
+			$kunde->setKundenliste($kundenliste);
+			$em->persist($kundenliste);
 
             $em->flush();
             
@@ -152,6 +154,7 @@ class KundeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($kunde);
+            $em->remove($kunde->getKundenliste());
             $em->flush();
         }
 
