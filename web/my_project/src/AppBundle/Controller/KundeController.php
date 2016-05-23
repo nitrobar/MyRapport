@@ -148,6 +148,7 @@ class KundeController extends Controller
      */
     public function deleteAction(Request $request, Kunde $kunde)
     {
+    	
         $form = $this->createDeleteForm($kunde);
         $form->handleRequest($request);
 
