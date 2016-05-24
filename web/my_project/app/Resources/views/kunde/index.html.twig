@@ -12,18 +12,17 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Adresse</th>
                 <th>Ort</th>
                 <th>Telefon</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="small">
         {% for kunde in kundes %}
             <tr>
-                <td><a href="{{ path('kunde_show', { 'id': kunde.id }) }}">{{ kunde.id }}</a></td>
+                
                 <td>{{ kunde.name }}</td>
                 <td>{{ kunde.adresse }}</td>
                 <td>{{ kunde.ort }}</td>
@@ -36,7 +35,6 @@
   <a href="{{ path('kunde_show', { 'id': kunde.id }) }}" class="btn btn-info">Anzeigen</a>
   <a href="{{ path('kunde_edit', { 'id': kunde.id }) }}" class="btn btn-primary">Ändern</a>
   </div>
-
 
                         
                       </li>                                   

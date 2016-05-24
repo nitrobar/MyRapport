@@ -11,16 +11,15 @@
     <table class="table table-striped ">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Typ</th>
                 <th>Preis</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="small">
         {% for material in materials %}
             <tr>
-                <td><a href="{{ path('material_show', { 'id': material.id }) }}">{{ material.id }}</a></td>
+                
                 <td >{{ material.typ }}</td>
                 <td>{{ material.preis }}</td>
                 <td>
