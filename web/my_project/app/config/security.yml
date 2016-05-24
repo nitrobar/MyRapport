@@ -15,7 +15,11 @@ security:
     
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
-    - { path: ^/kunden/new, roles: ROLE_ADMIN }
+    - { path: ^/kunden/new, roles: ROLE_ADMIN}
+    - { path: ^/studeneintrag, roles: ROLE_NO_ACCESS }
+    - { path: ^/materialeintrag, roles: ROLE_NO_ACCESS }
+    - { path: ^/materialeintragliste, roles: ROLE_NO_ACCESS }
+    - { path: ^/stundeneintragliste, roles: ROLE_NO_ACCESS }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
     
     
