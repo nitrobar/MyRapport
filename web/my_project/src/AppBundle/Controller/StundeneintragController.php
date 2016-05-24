@@ -65,7 +65,7 @@ class StundeneintragController extends Controller
             
 //--------------------Daten von Mitarbeiter auslesen-----------------------------------------
 
-            //-----------------------------check, ob if Mitarbeiter der Chef angemeldet--------------------------------
+            //-----------------------------check, ob Mitarbeiter oder Chef angemeldet--------------------------------
             $mitarbeiterliste = new Mitarbeiterliste();
             if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             	$mitarbeiterliste = $em->getRepository('AppBundle:Mitarbeiterliste')->findOneBy(array('id' => 2));
