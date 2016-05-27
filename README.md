@@ -1,7 +1,7 @@
 # MyRapport
 
 ## Dokumentation
-[Aktuelle Projektskizze](PDF's/MyRapport_Projektstruktur_0.5.pdf)
+[Aktuelle Projektskizze](PDF's/MyRapport_Projektstruktur_0.6.pdf)
 
 ##Allgemein
 Das Projekt MyRapport wurde mit dem PHP Framework Symfony erstellt.
