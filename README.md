@@ -139,7 +139,16 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
 	$ php bin/console doctrine:schema:update --force
 	```
 
-7. Im Verzeichniss web/my_project den Server starten
+7. Anschliessend müssen folgende SQL Anweisungen ausgeführt werden, damit ein Mitarbeiter und Chef angelegt wreden.
+	```
+	﻿INSERT INTO mitarbeiterliste VALUES (1, 'Mitarbeiter');
+	INSERT INTO mitarbeiterliste VALUES (2, 'Chef');
+
+	INSERT INTO mitarbeiter VALUES (1, 1, 'Mitarbeiter', 80, 'Mitarbeiter');
+	INSERT INTO mitarbeiter VALUES (2, 2, 'Chef', 150, 'Chef');
+	```
+
+8. Im Verzeichniss web/my_project den Server starten
 	```
 	php bin/console server:start
 	```
