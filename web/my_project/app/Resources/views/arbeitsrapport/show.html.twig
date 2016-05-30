@@ -52,7 +52,7 @@
         {% for stundeneintrag in stundeneintrags%}
         
             <tr>
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d.m.Y') }}{% endif %}</td>
                 <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
                 <td>{{ stundeneintrag.std }}</td>
@@ -119,7 +119,7 @@ Total Materialkosten in CHF: {% for resultKostenMaterial in resultsKostenMateria
 </div>
 
 
-  <a class="btn btn-info" href="{{ path('projekt_index') }}"><- Projektübersicht</a>
+  <a class="btn btn-info" href="{{ path('projekt_index') }}">Zurück zur Übersicht</a>
 
   
 {% endblock %}

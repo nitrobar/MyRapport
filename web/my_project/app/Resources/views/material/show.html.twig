@@ -19,7 +19,7 @@
                 <td>{{ material.typ }}</td>
             </tr>
             <tr>
-                <th>Preis:</th>
+                <th>Preis [CHF]:</th>
                 <td>{{ material.preis }}</td>
             </tr>
         </tbody>
@@ -29,7 +29,7 @@
 
    
         <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('material_index') }}">Zurück</a>
+            <a class="btn btn-info" href="{{ path('material_index') }}">Zurück zur Übersicht</a>
         </li>
         <li class="list-inline">
             <a class="btn btn-primary" href="{{ path('material_edit', { 'id': material.id }) }}">Ändern</a>
