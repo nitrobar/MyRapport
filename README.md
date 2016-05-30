@@ -139,7 +139,7 @@ Aufrufen der Webseite gibt die Startseite von Symphony aus.
 	$ php bin/console doctrine:schema:update --force
 	```
 
-7. Anschliessend müssen folgende SQL Anweisungen ausgeführt werden, damit ein Mitarbeiter und Chef angelegt wreden.
+7. Anschliessend müssen folgende SQL Anweisungen in der Datenbank "myRapport" ausgeführt werden, damit ein Mitarbeiter und Chef angelegt werden.
 	```
 	﻿INSERT INTO mitarbeiterliste VALUES (1, 'Mitarbeiter');
 	INSERT INTO mitarbeiterliste VALUES (2, 'Chef');
