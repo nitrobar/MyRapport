@@ -46,7 +46,9 @@
 
    
         <li class="list-inline">
+        {% if is_granted("ROLE_ADMIN") %}
             <a class="btn btn-success"  href="{{ path('kunde_new') }}">Neuer Kunde anlegen</a>
+        {% endif %}
         </li>
 
 {% endblock %}
