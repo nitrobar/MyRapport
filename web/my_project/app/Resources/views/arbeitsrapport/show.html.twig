@@ -52,7 +52,7 @@
         {% for stundeneintrag in stundeneintrags%}
         
             <tr>
-                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if stundeneintrag.datum %}{{ stundeneintrag.datum|date('d.m.Y') }}{% endif %}</td>
                 <td>{{stundeneintrag.mitarbeiterliste.name}}</td>
                 <td>{{ stundeneintrag.leistung }}</td>
                 <td>{{ stundeneintrag.std }}</td>
