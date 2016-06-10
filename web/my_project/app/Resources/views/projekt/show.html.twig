@@ -10,10 +10,6 @@
     <table class="table table-striped">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ projekt.id }}</td>
-            </tr>
-            <tr>
                 <th>Projektname</th>
                 <td>{{ projekt.projektname }}</td>
             </tr>
@@ -21,7 +17,7 @@
     </table>
     
     <li class="list-inline">
-            <a class="btn btn-info" href="{{ path('projekt_index') }}">Zurück</a>
+            <a class="btn btn-info" href="{{ path('projekt_index') }}">Zurück zur Übersicht</a>
         </li>
         <li class="list-inline">
             <a class="btn btn-primary" href="{{ path('projekt_edit', { 'id': projekt.id }) }}">Ändern</a>

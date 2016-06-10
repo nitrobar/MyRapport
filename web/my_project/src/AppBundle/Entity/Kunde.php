@@ -53,7 +53,7 @@ class Kunde
     /**
      * @var string
      *
-     * @ORM\Column(name="telefon", type="string", length=10)
+     * @ORM\Column(name="telefon", type="string", length=13)
      */
     private $telefon;
 

@@ -28,13 +28,11 @@ class KundeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $kundes = $em->getRepository('AppBundle:Kunde')->findAll();
-       
-             
+
 
         return $this->render('kunde/index.html.twig', array(
-            'kundes' => $kundes,
-        ));
-          
+
+            'kundes' => $kundes,  ));
         
     }
 
