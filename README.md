@@ -15,11 +15,8 @@ Zuerst müssen die nötigen Pakete installiert werden:
 sudo apt-get install php5-sqlite php5-pgsql
 ```
 
-Danach kann mit folgender Anleitung Symfony installiert werden:
-
-https://symfony.com/doc/current/book/installation.html
-
 ### Installation des Symfony Command
+Danach das Symfony-Framework (siehe auch https://symfony.com/doc/current/book/installation.html) installieren:
 
 ```
 $ sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
